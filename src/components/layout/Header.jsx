@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import "./header.css";
+import AppContext from "../../Context";
 import {CiMenuBurger} from 'react-icons/ci'
 import {TfiClose} from 'react-icons/tfi'
 import img from "./svg/Volare1.svg";
@@ -8,30 +9,38 @@ import img3 from "./svg/Volare3.svg";
 
 const Header = () => {
 
+  // Define as many global variables as your app needs, and hooks 
+  // to set the state of the variable.
+  const [setting1value, setSetting1value] = useState('initialValue1');
+  const [setting2value, setSetting2value] = useState(false);
+
   const [isMobileNav, setMobileNav] = useState(false)
   console.log(isMobileNav)
 
   const existingClass = 'flex justify-around relative items-center h-[100px] bg-gradient-to-r from-[#9a9a9a] md:hidden border-b';
   const dynamicClass = isMobileNav ? 'border-white/50' : 'border-[#BD8334]';
   const combinedClasses = `${existingClass} ${dynamicClass}`;
+
+  let headerHeight = 100;
+
   return (
-    <div className="">
-      <div className='flex justify-evenly relative items-center h-[100px] bg-gradient-to-b from-[#9a9a9a] border-b border-[#E9C261] text-[#9e6515] max-md:hidden font text-[20px]'>
-        <div className="ml-12 h-full w-[40%] flex justify-start items-end">
-          <div className="h-[50px] w-[90%] flex justify-evenly items-center rounded-tl-[20px] bg-gradient-to-r from-[#9a9a9a] font-bold">
+    <div className={`h-[${headerHeight}px]`}>
+      <div className={`flex justify-between items-center h-[${headerHeight}px] bg-gradient-to-b from-[#9a9a9a] to-[white] border-b border-[#E9C261] text-[#c68832] max-md:hidden font text-[20px] fixed w-full`}>
+        <div className="h-full w-[50%] flex justify-start items-end">
+          <div className="h-[50px] w-[90%] flex justify-between items-center bg-gradient-to-r from-[#9a9a9a] font-bold">
             <div className="flex justify-center items-center w-full h-full"><a className="hover:text-black/80 tracking-widest hover:transition duration-1000 hover:scale-105" href="/watches">Watches</a></div> 
             <div className="flex justify-center items-center w-full h-full"><a className="hover:text-black/80 tracking-widest hover:transition duration-1000 hover:scale-105" href="/bands">Bands</a></div>
             <div className="flex justify-center items-center w-full h-full"><a className="hover:text-black/80 tracking-widest mr-9 hover:transition duration-1000 hover:scale-105" href="/cufflinks">Cufflinks</a></div>
           </div>
         </div>
         <div className='flex justify-center items-center h-[90px]'>
-            <a href="/" className='h-[100px] flex items-center'><img className='min-h-[80px] h-[90px]' src={img2} alt="" /></a>
+            <a href="/" className='h-[100px] flex items-center'><img className='min-h-[80px] h-[90px]' src={img3} alt="" /></a>
         </div>
-        <div className="mr-12 h-full w-[40%] flex flex-col justify-end items-end">
-          <div className="h-[50px] w-[90%] flex justify-between items-center rounded-tr-[20px] bg-gradient-to-l from-[#9a9a9a] font-bold">
+        <div className="h-full w-[50%] flex justify-end items-end">
+          <div className="h-[50px] w-[90%] flex justify-between items-center bg-gradient-to-l from-[#9a9a9a] font-bold">
             <div className="flex justify-center items-center w-full h-full"><a className="leading-[15px] tracking-wider text-center hover:text-black/80 ml-9 hover:transition duration-1000 hover:scale-105" href="">Our Journey</a></div>
             <div className="flex justify-center items-center w-full h-full"><a className="text-center tracking-widest hover:text-black/80 hover:transition duration-1000 hover:scale-105" href="">Contact</a></div>
-            <div className="flex justify-center items-center w-full h-full"><a className="text-center tracking-widest hover:text-black/80 hover:transition duration-1000 hover:scale-105" href="">Account</a></div>
+            <div className="flex justify-center items-center w-full h-full"><a className="text-center tracking-widest hover:text-black/80 hover:transition duration-1000 hover:scale-105" href="/logIn">Account</a></div>
           </div>
         </div>
       </div>

@@ -5,13 +5,15 @@ import Header from './layout/Header'
 import Home from './routes/Home'
 import Page404 from './routes/Page404'
 import Watches from './routes/Watches'
+import LogIn from './routes/LogIn'
 const AppRoutes = () => {
   return (
     <Router>
         <Routes>
             <Route path="/" element={<Layout/>}>
                 <Route index element={<Home/>} />
-                <Route path="/watches" element={<Watches/>}/>
+                <Route path="/watches" element={<Watches/>} />
+                <Route path='/logIn' element={<LogIn/>} />
                 <Route path="*" element={<Page404/>} />
             </Route>
         </Routes>
