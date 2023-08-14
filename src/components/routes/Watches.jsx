@@ -1,60 +1,119 @@
-import React from 'react'
-import classic from './img/classic.webp'
-import banner from './img/banner.webp'
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import classic from "./img/classic.webp";
+import banner from "./img/banner.webp";
+import desertImg from "../img/desert.jpg";
+import { API_URL, TOKEN_KEY, getApiMethod } from "../../services/apiService";
 
-const Watches = () => {
+const Watches = ({ watches }) => {
+  const featuredWatches = async() => {
+      const url = API_URL + "/watches/featured"
+      const {data} = await axios({
+          url:url
+      })
+      setFeatured(data);
+  }
+
+  useEffect(() => {
+    featuredWatches();
+  }, [])
+  
+
+  const [featured, setFeatured] = useState([])
+
   return (
-    <div className='bg-[#FEF8F1] -z-20 relative'>
-        <div className=''>
-            <img className='object-cover w-[100vw] h-[350px] -z-10 absolute' src={banner} alt="" />
-            <div className='h-[350px] w-[30%] text-white flex flex-col items-center justify-center'>
-                <div className='text-center rounded-2xl max-lg:hidden'>
-                    <p className='text-3xl'>Rolex</p>
-                    <p className='text-4xl hover:underline underline-offset-[5px] '>Day-Date</p>
-                    <p className='mt-5 tracking-[4px]'>Every dial a discovery</p>
-                </div>
-            </div>
-            {/*  */}
-            <div className='text-center rounded-2xl pt-5 lg:hidden'>
-                    <p className='text-3xl'>Rolex</p>
-                    <p className='text-4xl hover:underline underline-offset-[4px] '>Day-Date</p>
-                    <p className='mt-5 tracking-[4px]'>Every dial a discovery</p>
-                </div>
+    <div className="">
+      <div className="">
+        <img
+          className="object-cover w-[100vw] h-[350px] -z-10 absolute"
+          src={banner}
+          alt=""
+        />
+        <div className="h-[350px] w-[30%] text-white flex flex-col items-center justify-center">
+          <div className="text-center rounded-2xl max-lg:hidden">
+            <p className="text-3xl">Rolex</p>
+            <p className="text-4xl hover:underline underline-offset-[5px] ">
+              Day-Date
+            </p>
+            <p className="mt-5 tracking-[4px]">Every dial a discovery</p>
+          </div>
         </div>
         {/*  */}
-        <div className='px-24 pt-12'>
-            <div className='pb-5'>
-                <h4 className='text-3xl'>Explore Our Refined Timepieces</h4>
-            </div>
-            <div className="min-h-[350px] w-full flex max-lg:flex-wrap justify-between">
-                <article className='bg-white my-5 p-3 w-[23.5%] max-lg:w-[47%] max-sm:w-full rounded-3xl shadow-md hover:shadow-xl duration-300'>
-                    <div><img className='h-[200px] w-full object-contain' src="https://images.secondmovement.com/pub/media/catalog/product/cache/740f07c2874873cb81dfd99f3cb159d1/r/o/rolex-day-date-228206-iceblueromind_1.jpg" alt="" /></div>
-                    <div className='flex flex-col items-center justify-center h-[115px]'>
-                    <p className='text-center font-semibold leading-[24px] tracking-[1px]'>Rolex<br/>Oyster Perpetual<br/>Day-Date</p>
-                    </div>
-                </article>
-                <article className='bg-white my-5 p-3 w-[23.5%] max-lg:w-[47%] max-sm:w-full rounded-3xl shadow-md hover:shadow-xl duration-300'>
-                    <div><img className='h-[200px] w-full object-contain' src="https://images.secondmovement.com/pub/media/catalog/product/cache/740f07c2874873cb81dfd99f3cb159d1/r/o/rolex-day-date-228206-iceblueromind_1.jpg" alt="" /></div>
-                    <div className='flex flex-col items-center justify-center h-[115px]'>
-                    <p className='text-center font-semibold leading-[24px] tracking-[1px]'>Rolex<br/>Oyster Perpetual<br/>Day-Date</p>
-                    </div>
-                </article>
-                <article className='bg-white my-5 p-3 w-[23.5%] max-lg:w-[47%] max-sm:w-full rounded-3xl shadow-md hover:shadow-xl duration-300'>
-                    <div><img className='h-[200px] w-full object-contain' src="https://images.secondmovement.com/pub/media/catalog/product/cache/740f07c2874873cb81dfd99f3cb159d1/r/o/rolex-day-date-228206-iceblueromind_1.jpg" alt="" /></div>
-                    <div className='flex flex-col items-center justify-center h-[115px]'>
-                    <p className='text-center font-semibold leading-[24px] tracking-[1px]'>Rolex<br/>Oyster Perpetual<br/>Day-Date</p>
-                    </div>
-                </article>
-                <article className='bg-white my-5 p-3 w-[23.5%] max-lg:w-[47%] max-sm:w-full rounded-3xl shadow-md hover:shadow-xl duration-300'>
-                    <div><img className='h-[200px] w-full object-contain' src="https://images.secondmovement.com/pub/media/catalog/product/cache/740f07c2874873cb81dfd99f3cb159d1/r/o/rolex-day-date-228206-iceblueromind_1.jpg" alt="" /></div>
-                    <div className='flex flex-col items-center justify-center h-[115px]'>
-                    <p className='text-center font-semibold leading-[24px] tracking-[1px]'>Rolex<br/>Oyster Perpetual<br/>Day-Date</p>
-                    </div>
-                </article>
-            </div>
+        <div className="text-center rounded-2xl pt-5 lg:hidden">
+          <p className="text-3xl">Rolex</p>
+          <p className="text-4xl hover:underline underline-offset-[4px] ">
+            Day-Date
+          </p>
+          <p className="mt-5 tracking-[4px]">Every dial a discovery</p>
         </div>
+      </div>
+      {/*  */}
+      <div className="p-16">
+        <h4 className="text-3xl ml-4 mb-8">Explore Our Refined Timepieces</h4>
+        <div className="grid grid-cols-4 max-lg:grid-cols-2 max-md:grid-cols-1 gap-6 p-1">
+          {featured.map((item, i) => (
+            <article key={i} className="bg-white p-3 rounded-3xl shadow-md hover:shadow-xl duration-300">
+              <Link to={"/product/" + item._id}>
+              <div>
+                <img
+                  className="h-[200px] w-full object-contain"
+                  src={item.img_url}
+                  alt=""
+                />
+              </div>
+              <div className="flex flex-col items-center justify-center h-[115px]">
+                <p className="text-center font-semibold leading-[24px] tracking-[1px]">
+                  {item.name}
+                  
+                </p>
+              </div></Link>
+            </article>
+          ))}
+        </div>
+      </div>
+      {/*  */}
+      <div className="bg-gradient-to-t from-slate-500 from-20% via-slate-400 to-[#ececea] h-[500px]"></div>
+      <div className="bg-gradient-to-t from-[#ececea] from-0% via-slate-400 to-slate-500 to-80% -mb-[351px] h-[750px]"></div>
+      {/*  */}
+      <div className="-z-10 relative">
+        <img
+          src={desertImg}
+          className="gradient-to-b from-black to-slate-500"
+          alt=""
+        />
+      </div>
+      <div className="-mt-[200px] h-[200px] bg-gradient-to-b from-black/0 to-[#ececea]"></div>
+      {/*  */}
+      <div className="p-20 bg-[#ececea]">
+        <h4 className="text-3xl ml-4 mb-8">All Timepieces</h4>
+        <div className="grid grid-cols-4 max-lg:grid-cols-2 max-md:grid-cols-1 gap-5">
+          {watches.map((item, i) => (
+            <article
+              key={i}
+              className="bg-white p-3 rounded-2xl shadow-md hover:shadow-2xl duration-300"
+            >
+              <Link to={"/product/" + item._id}>
+                <div>
+                  <img
+                    className="h-[200px] w-full object-contain"
+                    src={item.img_url}
+                    alt=""
+                  />
+                </div>
+                <div className="flex flex-col items-center justify-between h-[115px]">
+                  <p className="text-center font-semibold leading-[24px] tracking-[1px] text-sm overflow-hidden text-ellipsis">
+                    {item.name}
+                  </p>
+                  <p className="mt-3 text-xs font-semibold">${item.price}</p>
+                </div>
+              </Link>
+            </article>
+          ))}
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Watches
+export default Watches;
