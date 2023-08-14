@@ -20,6 +20,7 @@ import AdminLogIn from "./routes/Admin/AdminLogIn";
 import useData from "../hooks/useData";
 import useBands from "../hooks/useBands";
 import useWatches from "../hooks/useWatches";
+import apiClient from "../services/apiClient";
 
 const AppRoutes = () => {
   const [cufflinks, setCufflinks] = useState([]);
@@ -40,12 +41,11 @@ const AppRoutes = () => {
     console.log(data);
   };
 
-  
   const getWatches = async() => {
-    const url = API_URL + "/watches";
-    const {data} = await axios(url);
-    setWatches(data);
-    console.log(data);
+    const {data} = await axios({
+      url:API_URL + "/watches"
+    })
+    setWatches(data)
   }
 
   useEffect(() => {

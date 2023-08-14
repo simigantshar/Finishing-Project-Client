@@ -31,13 +31,6 @@ const Header = () => {
 
   const [truth, setTruth] = useState(false);
 
-  if(localStorage["products_token"]){
-    console.log("Logged in!");
-  }
-  else{
-    console.log("Logged out!");
-  }
-
   return (
     <div className={`h-[${headerHeight}px]`}>
       <div
