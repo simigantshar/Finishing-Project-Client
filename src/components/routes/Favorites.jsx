@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { API_URL, TOKEN_KEY, getApiMethod, getApiheader } from "../../services/apiService";
+import { API_URL, TOKEN_KEY } from "../../services/apiService";
 import { IoMdHeartEmpty } from "react-icons/io";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Favorites = () => {
 
