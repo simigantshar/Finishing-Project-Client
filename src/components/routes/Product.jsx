@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { API_URL, TOKEN_KEY } from "../../services/apiService";
+import { API_URL, TOKEN_KEY, getApiMethod } from "../../services/apiService";
 import { HiOutlineChevronDown } from "react-icons/hi";
 import { useEffect, useState } from "react";
 import { VscHeart } from "react-icons/vsc";
@@ -18,7 +18,7 @@ export const Product = ({ products }) => {
     isFavorite();
   }, []);
 
-  const isFavorite = async () => {
+  const isFavorite = async() => {
     const url = API_URL + "/users/isFavorite";
     const { data } = await axios({
       url: url,
@@ -31,6 +31,11 @@ export const Product = ({ products }) => {
     console.log(data);
     setLiked(data);
   };
+
+  const addToCart = async() => {
+    // const url = "/users/cart/" + productId;
+    // const {data} = await axios(url);
+  }
 
   const handleFavorite = async () => {
     const token = localStorage.getItem(TOKEN_KEY);
@@ -130,6 +135,7 @@ export const Product = ({ products }) => {
                   ))}{" "}
                 <button
                   onMouseOver={() => setShowPrice(false)}
+                  onClick={addToCart}
                   className="font-thin hover:font-normal hover:w-full p-[10px] bg-slate-400 rounded-lg hover:bg-slate-400/90 duration-150"
                 >
                   Add to cart

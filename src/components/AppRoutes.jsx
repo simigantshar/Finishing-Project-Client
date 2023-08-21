@@ -11,47 +11,35 @@ import Test from "./routes/Test";
 import Bands from "./routes/Bands";
 import Cufflinks from "./routes/Cufflinks";
 import { Product } from "./routes/Product";
-import axios from "axios";
-import { API_URL } from "../services/apiService";
+import { API_URL, getApi } from "../services/apiService";
 import Account from "./routes/Account";
 import Cart from "./routes/Cart";
 import Favorites from "./routes/Favorites";
 import AdminLogIn from "./routes/Admin/AdminLogIn";
-import useData from "../hooks/useData";
-import useBands from "../hooks/useBands";
-import useWatches from "../hooks/useWatches";
-import apiClient from "../services/apiClient";
+import { useData } from "../hooks/useData";
 
 const AppRoutes = () => {
+
   const [cufflinks, setCufflinks] = useState([]);
   const [bands, setBands] = useState([]);
   const [watches, setWatches] = useState([]);
 
   const getCufflinks = async () => {
-    const url = API_URL + "/cufflinks";
-    const { data } = await axios(url);
-    setCufflinks(data);
+    setCufflinks(await getApi("/cufflinks"));
   };
-
   
   const getBands = async () => {
-    const url = API_URL + "/bands";
-    const { data } = await axios(url);
-    setBands(data);
-    console.log(data);
+    setBands(await getApi("/bands"));
   };
-
-  const getWatches = async() => {
-    const {data} = await axios({
-      url:API_URL + "/watches"
-    })
-    setWatches(data)
-  }
+  
+  const getWatches = async () => {
+    setWatches(await getApi("/watches"));
+  };
 
   useEffect(() => {
     getCufflinks();
-    getBands();
     getWatches();
+    getBands();
   }, []);
 
   return (
