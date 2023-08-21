@@ -7,16 +7,20 @@ import { SlHandbag } from "react-icons/sl";
 import { LiaUserCircle } from "react-icons/lia";
 import { CiSearch } from "react-icons/ci";
 import { GoChevronDown } from "react-icons/go";
-import {AiOutlineHeart} from 'react-icons/ai'
+import { AiOutlineHeart } from "react-icons/ai";
 import img from "./svg/Volare1.svg";
 import img2 from "./svg/Volare2.svg";
 import img3 from "./svg/Volare3.svg";
-import userLoggedIn from '../img/userLoggedIn.png'
-import { Link } from "react-router-dom";
+import userLoggedIn from "../img/userLoggedIn.png";
+import { Link, useNavigate } from "react-router-dom";
+import { TOKEN_KEY } from "../../services/apiService";
 
 const Header = () => {
   // Define as many global variables as your app needs, and hooks
   // to set the state of the variable.
+
+  const nav = useNavigate();
+
   const [setting1value, setSetting1value] = useState("initialValue1");
   const [setting2value, setSetting2value] = useState(false);
 
@@ -83,19 +87,60 @@ const Header = () => {
               </div>
             </div>
             <div>
-              <Link to={"/favorites"}><AiOutlineHeart className="hover:text-[#bd8434]" size={"23px"} /></Link>
+              {localStorage[TOKEN_KEY] ? (
+                <Link to={"/favorites"}>
+                  <AiOutlineHeart
+                    className="hover:text-[#bd8434]"
+                    size={"23px"}
+                  />
+                </Link>
+              ) : (
+                
+                  <div className="dropdown">
+                    <label tabIndex={0} className="m-1">
+                      <AiOutlineHeart
+                        className="hover:text-[#bd8434]"
+                        size={"23px"}
+                      />
+                    </label>
+                    <div className="flex flex-col justify-between items-center -mt-[16px] h-20 -ml-[100px] dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-56">
+                      <p className="text-[16px]">
+                        You need to sign in to favorite!
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => nav("/login")} // Replace '/login' with your desired route
+                        tabIndex={0}
+                        className="bg-gray-300 rounded-md p-1 text-[18px] w-[50%]"
+                      >
+                        Sign In
+                      </button>
+                    </div>
+                  </div>
+              )}
             </div>
             <div>
-              <Link to={"/cart"}><SlHandbag className="hover:text-[#bd8334]" size={"20px"} /></Link>
+              <Link to={"/cart"}>
+                <SlHandbag className="hover:text-[#bd8334]" size={"20px"} />
+              </Link>
             </div>
-            {localStorage["products_token"]? <div>
-              <Link to={"/account"}> <img src={userLoggedIn} className="w-[28px]" alt="" /></Link>
-            </div>
-            :
-            <div>
-              <Link to={"/login"}><LiaUserCircle className="hover:text-[#bd8334]" size={"25px"} /></Link>
-            </div>
-            }
+            {localStorage["products_token"] ? (
+              <div>
+                <Link to={"/account"}>
+                  {" "}
+                  <img src={userLoggedIn} className="w-[28px]" alt="" />
+                </Link>
+              </div>
+            ) : (
+              <div>
+                <Link to={"/login"}>
+                  <LiaUserCircle
+                    className="hover:text-[#bd8334]"
+                    size={"25px"}
+                  />
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>

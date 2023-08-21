@@ -28,7 +28,6 @@ export const Product = ({ products }) => {
         "x-api-key": localStorage[TOKEN_KEY],
       },
     });
-    console.log(data);
     setLiked(data);
   };
 
@@ -43,6 +42,7 @@ export const Product = ({ products }) => {
       return alert("You have to be logged in to favorite this product!");
     }
     const url = API_URL + "/users/favorite/" + product?._id;
+    setLiked(!liked)
     const { data } = await axios({
       url: url,
       method: "PATCH",
@@ -120,7 +120,6 @@ export const Product = ({ products }) => {
                     <FcLike
                       size={25}
                       onClick={() => {
-                        setLiked(false);
                         handleFavorite();
                       }}
                     />
@@ -128,7 +127,6 @@ export const Product = ({ products }) => {
                     <VscHeart
                       size={22}
                       onClick={() => {
-                        setLiked(true);
                         handleFavorite();
                       }}
                     />

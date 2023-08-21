@@ -132,7 +132,7 @@ const LogIn = () => {
               <p>
                 New to volare horlogerie? Create an account{" "}
                 <Link to={"/signUp"}>
-                  <span className="underline text-yellow-700">here</span>
+                  <span className="underline hover:text-blue-600 text-yellow-700">here</span>
                 </Link>
               </p>
             </div>
