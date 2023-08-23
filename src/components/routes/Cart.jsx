@@ -1,21 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { IoMdHeartEmpty } from "react-icons/io";
-import { API_URL, TOKEN_KEY } from "../../services/apiService";
-import axios from "axios";
+import { getApi } from "../../services/apiService";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
+
+    const nav = useNavigate();
+
   const [cartAr, setCartAr] = useState([]);
 
   const getCartItems = async () => {
-    const url = API_URL + "/users/cart";
-    const { data } = await axios({
-      url: url,
-      method: "GET",
-      headers: {
-        "x-api-key": localStorage[TOKEN_KEY],
-      },
-    });
-    setCartAr(data);
+    setCartAr(await getApi("/users/cart"))
   };
 
   useEffect(() => {
@@ -30,6 +25,7 @@ const Cart = () => {
           <div className="mt-10">
             {cartAr.map((item, i) => (
               <div
+                onClick={() => nav("/product/" + item._id)}
                 key={i}
                 className="grid grid-cols-8 grid-rows-2 my-4 gap-x-6 border-black/20 border p-5 rounded-xl"
               >

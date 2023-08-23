@@ -12,22 +12,7 @@ export const getApi = async (url) => {
       url: API_URL + url,
       method: "GET",
       headers: {
-        TOKEN_SECRET: localStorage[TOKEN_KEY],
-      },
-    });
-    return data;
-  } catch (err) {
-    throw err;
-  }
-};
-
-export const getApiheader = async (url, method) => {
-  try {
-    const { data } = await axios({
-      url: url,
-      method: method,
-      headers: {
-        TOKEN_SECRET: localStorage[TOKEN_KEY],
+        [TOKEN_SECRET]: localStorage[TOKEN_KEY],
       },
     });
     return data;
@@ -39,12 +24,12 @@ export const getApiheader = async (url, method) => {
 export const getApiMethod = async (url, method, bodyData) => {
   try {
     const { data } = await axios({
-      url: url,
+      url: API_URL + url,
       method: method,
-      headers: {
-        TOKEN_SECRET: localStorage[TOKEN_KEY],
-      },
       data: bodyData,
+      headers: {
+        [TOKEN_SECRET]: localStorage[TOKEN_KEY],
+      },
     });
     return data;
   } catch (err) {

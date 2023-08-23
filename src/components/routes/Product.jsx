@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { API_URL, TOKEN_KEY, getApiMethod } from "../../services/apiService";
+import { API_URL, TOKEN_KEY, TOKEN_SECRET, getApiMethod } from "../../services/apiService";
 import { HiOutlineChevronDown } from "react-icons/hi";
 import { useEffect, useState } from "react";
 import { VscHeart } from "react-icons/vsc";
@@ -9,59 +9,59 @@ import { FcLike } from "react-icons/fc";
 import cufflinksAd from "../img/cufflinksAd.jpeg";
 import cufflinksSpecial from "../img/cufflinksSpecial.webp";
 
+
 export const Product = ({ products }) => {
   const { productId } = useParams();
   const product = products.find((p) => p._id === productId);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    isFavorite();
-  }, []);
-
+  
+  const nav = useNavigate();
+  
+  const [liked, setLiked] = useState(false);
+  
   const isFavorite = async() => {
-    const url = API_URL + "/users/isFavorite";
-    const { data } = await axios({
-      url: url,
-      method: "POST",
-      data: { productId },
-      headers: {
-        "x-api-key": localStorage[TOKEN_KEY],
-      },
-    });
-    setLiked(data);
+    // const url = "/users/isFavorite";
+    // const data = await getApiMethod(url, "POST", productId);
+    // console.log(data);
+    // setLiked(await getApiMethod(url, "POST", productId))
+    // console.log(productId)
+    // console.log(liked)
+    const url = "/users/isFavorite";
+    const{data} = await axios({
+      url:API_URL + url,
+      method:"POST",
+      body:productId,
+      headers:{
+        [TOKEN_SECRET]:localStorage[TOKEN_KEY]
+      }
+    })
+    console.log(data)
   };
-
+  
   const addToCart = async() => {
     // const url = "/users/cart/" + productId;
     // const {data} = await axios(url);
   }
-
+  
   const handleFavorite = async () => {
     const token = localStorage.getItem(TOKEN_KEY);
     if (!token) {
       return alert("You have to be logged in to favorite this product!");
     }
-    const url = API_URL + "/users/favorite/" + product?._id;
+    const url = "/users/favorite/" + product?._id;
     setLiked(!liked)
-    const { data } = await axios({
-      url: url,
-      method: "PATCH",
-      data: { productId },
-      headers: {
-        "x-api-key": token,
-      },
-    });
+    await getApiMethod(url, "PATCH");
     // operation was successful, update user state
   };
-
-  const nav = useNavigate();
-
+  
   const [showPrice, setShowPrice] = useState(true);
-
-  const [liked, setLiked] = useState(false);
 
   const [showExplore, setShowExplore] = useState(false);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    isFavorite();
+  }, []);
+  
   return (
     <div>
       {/* Product

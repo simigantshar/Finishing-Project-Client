@@ -11,12 +11,11 @@ import Test from "./routes/Test";
 import Bands from "./routes/Bands";
 import Cufflinks from "./routes/Cufflinks";
 import { Product } from "./routes/Product";
-import { API_URL, getApi } from "../services/apiService";
+import { getApi } from "../services/apiService";
 import Account from "./routes/Account";
 import Cart from "./routes/Cart";
 import Favorites from "./routes/Favorites";
 import AdminLogIn from "./routes/Admin/AdminLogIn";
-import { useData } from "../hooks/useData";
 
 const AppRoutes = () => {
 
