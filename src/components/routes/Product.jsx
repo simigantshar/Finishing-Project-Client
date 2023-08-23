@@ -29,7 +29,7 @@ export const Product = ({ products }) => {
     const{data} = await axios({
       url:API_URL + url,
       method:"POST",
-      body:{productId},
+      data: {productId},
       headers:{
         [TOKEN_SECRET]:localStorage[TOKEN_KEY]
       }
