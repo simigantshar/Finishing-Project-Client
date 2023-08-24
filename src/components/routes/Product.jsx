@@ -133,7 +133,7 @@ export const Product = ({ products }) => {
                   onClick={addToCart}
                   className={`${
                     addedToCart && "bg-green-600 hover:bg-green-600 w-full"
-                  } max-lg:bg-blue-500 font-thin hover:font-normal hover:w-full p-[10px] bg-slate-400 rounded-lg hover:bg-slate-400/90`}
+                  } font-thin hover:font-normal hover:w-full p-[10px] bg-slate-400 rounded-lg hover:bg-slate-400/90`}
                 >
                   {addedToCart ? (
                     <div className="flex justify-center font-semibold">
