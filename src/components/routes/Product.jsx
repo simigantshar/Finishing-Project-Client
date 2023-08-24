@@ -61,12 +61,12 @@ export const Product = ({ products }) => {
     <div>
       {/* Product
       <button onClick={handleFavorite}>Favorite</button> */}
-      {product?.type === "watch" ? (
-        <div className="mx-32">
+      {product?.type === "band" ? (
+        <div className="mx-32 max-lg:mx-10">
           <div className="py-5 grid grid-cols-2 gap-x-5">
             <div className="">
-              <div className="grid grid-cols-5 gap-x-3">
-                <div className="col-span-1 flex flex-col justify-between">
+              <div className="grid grid-cols-5 gap-x-3 max-lg:grid-cols-4 max-lg:grid-rows-2">
+                <div className="col-span-1 flex flex-col justify-between max-lg:col-span-4 max-lg:grid-rows-1">
                   <img
                     className="aspect-square object-cover rounded-md"
                     src={product.img_url[0] ? product.img_url[0] : ""}
@@ -88,10 +88,10 @@ export const Product = ({ products }) => {
                     alt=""
                   />
                 </div>
-                <div className="col-span-4">
+                <div className="col-span-4 max-lg:grid-rows-1">
                   <img
                     className="aspect-square object-cover rounded-lg h-full"
-                    src={product.img_url}
+                    src={product.img_url[0]}
                     alt=""
                   />
                 </div>
@@ -99,17 +99,17 @@ export const Product = ({ products }) => {
             </div>
             <div className="flex flex-col justify-between">
               <div>
-                <h1 className="text-3xl font-thin">{product.name}</h1>
-                <p className="">{product.company}</p>
+                <h1 className="text-3xl font-thin pb-2">{product.name}</h1>
+                <p className="pb-1">{product.company}</p>
               </div>
               <div>
-                <p className="f font-thin">{product.description}</p>
+                <p className="f font-thin pb-2">{product.description}</p>
               </div>
               <div
                 onMouseLeave={() => {
                   !addedToCart && setShowPrice(true);
                 }}
-                className="flex justify-between items-center w-2/5"
+                className="flex justify-between items-center w-3/5"
               >
                 {showPrice && <p className="font-semibold">${product.price}</p>}
                 {showPrice &&
@@ -133,7 +133,7 @@ export const Product = ({ products }) => {
                   onClick={addToCart}
                   className={`${
                     addedToCart && "bg-green-600 hover:bg-green-600 w-full"
-                  } font-thin hover:font-normal hover:w-full p-[10px] bg-slate-400 rounded-lg hover:bg-slate-400/90`}
+                  } max-md:bg-blue-500 font-thin hover:font-normal hover:w-full w-[60%] p-[10px] bg-slate-400 rounded-lg hover:bg-slate-400/90`}
                 >
                   {addedToCart ? (
                     <div className="flex justify-center font-semibold">
