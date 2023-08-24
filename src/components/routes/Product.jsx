@@ -1,67 +1,62 @@
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { API_URL, TOKEN_KEY, TOKEN_SECRET, getApiMethod } from "../../services/apiService";
+import {
+  API_URL,
+  TOKEN_KEY,
+  TOKEN_SECRET,
+  getApiMethod,
+} from "../../services/apiService";
 import { HiOutlineChevronDown } from "react-icons/hi";
+import { BsCartCheck } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { VscHeart } from "react-icons/vsc";
 import { FcLike } from "react-icons/fc";
 import cufflinksAd from "../img/cufflinksAd.jpeg";
 import cufflinksSpecial from "../img/cufflinksSpecial.webp";
 
-
 export const Product = ({ products }) => {
   const { productId } = useParams();
   const product = products.find((p) => p._id === productId);
-  
+
   const nav = useNavigate();
-  
+
   const [liked, setLiked] = useState(false);
-  
-  const isFavorite = async() => {
-    // const url = "/users/isFavorite";
-    // const data = await getApiMethod(url, "POST", productId);
-    // console.log(data);
-    // setLiked(await getApiMethod(url, "POST", productId))
-    // console.log(productId)
-    // console.log(liked)
+  const [addedToCart, setAddedToCart] = useState(false);
+  const [showPrice, setShowPrice] = useState(true);
+  const [showExplore, setShowExplore] = useState(false);
+
+  const isFavorite = async () => {
     const url = "/users/isFavorite";
-    const{data} = await axios({
-      url:API_URL + url,
-      method:"POST",
-      data: {productId},
-      headers:{
-        [TOKEN_SECRET]:localStorage[TOKEN_KEY]
-      }
-    })
-    console.log(data)
+    setLiked(await getApiMethod(url, "POST", { productId }));
   };
-  
-  const addToCart = async() => {
-    // const url = "/users/cart/" + productId;
-    // const {data} = await axios(url);
-  }
-  
+
+  const addToCart = async () => {
+    setAddedToCart(true);
+    setShowPrice(false);
+    setTimeout(() => {
+      setAddedToCart(false);
+      setShowPrice(true);
+    }, 1500);
+    const url = "/users/addCart/" + productId;
+    await getApiMethod(url, "PATCH");
+  };
+
   const handleFavorite = async () => {
     const token = localStorage.getItem(TOKEN_KEY);
     if (!token) {
       return alert("You have to be logged in to favorite this product!");
     }
     const url = "/users/favorite/" + product?._id;
-    setLiked(!liked)
+    setLiked(!liked);
     await getApiMethod(url, "PATCH");
-    // operation was successful, update user state
   };
-  
-  const [showPrice, setShowPrice] = useState(true);
-
-  const [showExplore, setShowExplore] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     isFavorite();
   }, []);
-  
+
   return (
     <div>
       {/* Product
@@ -111,7 +106,9 @@ export const Product = ({ products }) => {
                 <p className="f font-thin">{product.description}</p>
               </div>
               <div
-                onMouseLeave={() => setShowPrice(true)}
+                onMouseLeave={() => {
+                  !addedToCart && setShowPrice(true);
+                }}
                 className="flex justify-between items-center w-2/5"
               >
                 {showPrice && <p className="font-semibold">${product.price}</p>}
@@ -130,13 +127,21 @@ export const Product = ({ products }) => {
                         handleFavorite();
                       }}
                     />
-                  ))}{" "}
+                  ))}
                 <button
                   onMouseOver={() => setShowPrice(false)}
                   onClick={addToCart}
-                  className="font-thin hover:font-normal hover:w-full p-[10px] bg-slate-400 rounded-lg hover:bg-slate-400/90 duration-150"
+                  className={`${
+                    addedToCart && "bg-green-600 hover:bg-green-600 w-full"
+                  } max-lg:bg-blue-500 font-thin hover:font-normal hover:w-full p-[10px] bg-slate-400 rounded-lg hover:bg-slate-400/90`}
                 >
-                  Add to cart
+                  {addedToCart ? (
+                    <div className="flex justify-center font-semibold">
+                      Added <BsCartCheck size={24} className="ml-2" />
+                    </div>
+                  ) : (
+                    "Add to cart"
+                  )}
                 </button>
               </div>
               <div>

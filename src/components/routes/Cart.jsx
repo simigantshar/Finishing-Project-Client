@@ -1,19 +1,39 @@
 import React, { useEffect, useState } from "react";
 import { IoMdHeartEmpty } from "react-icons/io";
-import { getApi } from "../../services/apiService";
+import { FcLike } from "react-icons/fc";
+import { getApi, getApiMethod } from "../../services/apiService";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-
-    const nav = useNavigate();
+  const nav = useNavigate();
 
   const [cartAr, setCartAr] = useState([]);
+  const [favs, setFavs] = useState([]);
 
   const getCartItems = async () => {
-    setCartAr(await getApi("/users/cart"))
+    setCartAr(await getApi("/users/cart"));
+  };
+
+  const handleFavorite = async (itemId) => {
+    const url = "/users/favorite/" + itemId;
+    await getApiMethod(url, "PATCH");
+    getFavorites();
+  };
+
+  const getFavorites = async () => {
+    const url = "/users/favorites";
+    const data = await getApi(url);
+    setFavs(data);
+  };
+
+  const removeFromCart = async (itemId) => {
+    const url = "/users/removeCart/" + itemId;
+    await getApiMethod(url, "PATCH");
+    getCartItems();
   };
 
   useEffect(() => {
+    getFavorites();
     getCartItems();
   }, []);
 
@@ -42,12 +62,28 @@ const Cart = () => {
                   <p className="font-semibold text-slate-500">${item.price}</p>
                 </div>
                 <div className="col-start-7 col-span-2 flex items-center">
-                  <button className="flex items-center border hover:border-gray-400 hover:text-gray-600 border-black px-3 py-1 rounded-md text-lg font-semibold">
-                    Favorite &nbsp; <IoMdHeartEmpty className="mt-[3px]" />
+                  <button
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      handleFavorite(item._id);
+                    }}
+                    className="flex items-center border hover:border-gray-400 hover:text-gray-600 border-black px-3 py-1 rounded-md text-lg font-semibold"
+                  >
+                    {favs.find((product) => product._id === item._id) ? (
+                      <FcLike className="mt-[3px]" />
+                    ) : (
+                      <IoMdHeartEmpty className="mt-[3px]" />
+                    )}
                   </button>
                 </div>
                 <div className="col-start-7 flex items-center">
-                  <button className="border hover:border-gray-400 hover:text-gray-600 border-black px-3 py-1 rounded-md text-lg font-semibold w-32">
+                  <button
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      removeFromCart(item._id);
+                    }}
+                    className="border hover:border-gray-400 hover:text-gray-600 border-black px-3 py-1 rounded-md text-lg font-semibold w-32"
+                  >
                     Remove
                   </button>
                 </div>
