@@ -53,65 +53,71 @@ export const Product = ({ products }) => {
   };
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
     isFavorite();
   }, []);
 
   return (
     <div>
-      {/* Product
-      <button onClick={handleFavorite}>Favorite</button> */}
       {product?.type === "band" ? (
         <div className="mx-32 max-lg:mx-10">
-          <div className="py-5 grid grid-cols-2 gap-x-5">
-            <div className="">
-              <div className="grid grid-cols-5 gap-x-3 max-lg:grid-cols-4 max-lg:grid-rows-2">
-                <div className="col-span-1 flex flex-col justify-between max-lg:col-span-4 max-lg:grid-rows-1">
-                  <img
-                    className="aspect-square object-cover rounded-md"
-                    src={product.img_url[0] ? product.img_url[0] : ""}
-                    alt=""
-                  />
-                  <img
-                    className="aspect-square object-cover rounded-md"
-                    src={product.img_url[1] ? product.img_url[1] : ""}
-                    alt=""
-                  />
-                  <img
-                    className="aspect-square object-cover rounded-md"
-                    src={product.img_url[2] ? product.img_url[2] : ""}
-                    alt=""
-                  />
-                  <img
-                    className="aspect-square object-cover rounded-md"
-                    src={product.img_url[3] ? product.img_url[3] : ""}
-                    alt=""
-                  />
-                </div>
-                <div className="col-span-4 max-lg:grid-rows-1">
-                  <img
-                    className="aspect-square object-cover rounded-lg h-full"
-                    src={product.img_url[0]}
-                    alt=""
-                  />
-                </div>
-              </div>
+          <div className="py-5 grid grid-cols-2 gap-x-5 max-md:grid-cols-1">
+            <div className="md:hidden">
+              <p className="font-thin">
+                <span className="font-normal">Reference: </span>
+                {product.ref}
+              </p>
             </div>
-            <div className="flex flex-col justify-between">
+            <div className="grid grid-rows-4 grid-flow-col grid-cols-5 max-md:grid-flow-row max-md:grid-cols-4">
+              <img
+                className="aspect-square object-cover rounded-md row-span-1 max-md:order-2"
+                src={product.img_url[0] ? product.img_url[0] : ""}
+                alt=""
+              />
+              <img
+                className="aspect-square object-cover rounded-md row-span-1 max-md:order-3"
+                src={product.img_url[1] ? product.img_url[1] : ""}
+                alt=""
+              />
+              <img
+                className="aspect-square object-cover rounded-md row-span-1 max-md:order-4"
+                src={product.img_url[2] ? product.img_url[2] : ""}
+                alt=""
+              />
+              <img
+                className="aspect-square object-cover rounded-md row-span-1 max-md:order-5"
+                src={product.img_url[3] ? product.img_url[3] : ""}
+                alt=""
+              />
+
+              <img
+                className="aspect-square object-cover rounded-lg h-full row-span-4 col-span-4 max-md:order-1"
+                src={product.img_url[0]}
+                alt=""
+              />
+            </div>
+            <div className="flex flex-col justify-between max-md:mt-8">
               <div>
-                <h1 className="text-3xl font-thin pb-2">{product.name}</h1>
-                <p className="pb-1">{product.company}</p>
+                <h1 className="text-3xl font-thin pb-2 max-md:text-center">
+                  {product.name}
+                </h1>
+                <p className="pb-1 max-md:text-center">{product.company}</p>
               </div>
               <div>
-                <p className="f font-thin pb-2">{product.description}</p>
+                <p className="f font-thin pb-2 max-md:text-center">
+                  {product.description}
+                </p>
               </div>
               <div
                 onMouseLeave={() => {
                   !addedToCart && setShowPrice(true);
                 }}
-                className="flex justify-between items-center w-3/5"
+                className="max-md:h-[75px] flex justify-between gap-x-3 items-center w-3/5 max-md:w-full max-md:flex-col"
               >
-                {showPrice && <p className="font-semibold">${product.price}</p>}
+                <div className="flex gap-x-2 items-center">
+                  {showPrice && (
+                  <p className="font-semibold">${product.price}.00</p>
+                )}
                 {showPrice &&
                   (liked ? (
                     <FcLike
@@ -128,12 +134,29 @@ export const Product = ({ products }) => {
                       }}
                     />
                   ))}
+                </div>
+                <button
+                  onMouseOver={() => setShowPrice(false)}
+                  onClick={addToCart}
+                  className={`${
+                    addedToCart && "bg-green-600 hover:bg-green-600"
+                  } max-md:bg-blue-500 font-thin hover:font-normal p-[10px] bg-slate-400 rounded-lg hover:h-full w-[300px] hover:bg-slate-400/90 md:hidden`}
+                >
+                  {addedToCart ? (
+                    <div className="flex justify-center font-semibold">
+                      Added <BsCartCheck size={24} className="ml-2" />
+                    </div>
+                  ) : (
+                    "Add to cart"
+                  )}
+                </button>
+                {/* ................................................ */}
                 <button
                   onMouseOver={() => setShowPrice(false)}
                   onClick={addToCart}
                   className={`${
                     addedToCart && "bg-green-600 hover:bg-green-600 w-full"
-                  } max-md:bg-blue-500 font-thin hover:font-normal hover:w-full w-[60%] p-[10px] bg-slate-400 rounded-lg hover:bg-slate-400/90`}
+                  } max-md:bg-blue-500 font-thin hover:font-normal hover:w-full flex-1 p-[10px] bg-slate-400 rounded-lg hover:bg-slate-400/90 max-md:hidden`}
                 >
                   {addedToCart ? (
                     <div className="flex justify-center font-semibold">
@@ -144,7 +167,7 @@ export const Product = ({ products }) => {
                   )}
                 </button>
               </div>
-              <div>
+              <div className="max-md:hidden">
                 <p className="font-thin">
                   <span className="font-normal">Reference: </span>
                   {product.ref}
@@ -154,7 +177,7 @@ export const Product = ({ products }) => {
           </div>
           <div
             onClick={() => window.scrollTo(0, 500)}
-            className="flex justify-center items-center mt-5 h-14 border-t border-black/40 hover:bg-gray-100"
+            className="max-md:hidden flex justify-center items-center mt-5 h-14 border-t border-black/40 hover:bg-gray-100"
           >
             <HiOutlineChevronDown />
           </div>
