@@ -21,8 +21,8 @@ const Header = () => {
 
   const nav = useNavigate();
 
-  const [setting1value, setSetting1value] = useState("initialValue1");
-  const [setting2value, setSetting2value] = useState(false);
+  // const [setting1value, setSetting1value] = useState("initialValue1");
+  // const [setting2value, setSetting2value] = useState(false);
 
   const [isMobileNav, setMobileNav] = useState(false);
 
@@ -51,6 +51,7 @@ const Header = () => {
               >
                 Shop {truth && <GoChevronDown />}
               </Link>
+              
             </div>
             <div className="flex justify-center items-center w-full h-full">
               <Link
