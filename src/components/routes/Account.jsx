@@ -8,6 +8,7 @@ import { HiOutlineX } from "react-icons/hi";
 import { API_URL, TOKEN_KEY } from "../../services/apiService";
 
 const Account = () => {
+
   const [userInfo, setUserInfo] = useState({});
 
   const getUserInfo = async () => {
@@ -53,7 +54,7 @@ const Account = () => {
   //   };
 
   const logOut = () => {
-    localStorage.removeItem("products_token");
+    localStorage.removeItem(TOKEN_KEY);
     window.location.href = "/";
   };
 
@@ -62,7 +63,7 @@ const Account = () => {
       <div className="m-[70px]">
         <div className="flex">
           <div className="bg-gray-200 rounded-s-full h-[75px] w-fit pr-7 rounded-e-[3000px] flex items-center">
-            <img src={userLoggedIn} className="h-[90px]" alt="" />
+            <img src={userInfo.pfp? userInfo.pfp : userLoggedIn} className="h-[90px]" alt="" />
             <input
               type="text"
               value={userInfo.name}

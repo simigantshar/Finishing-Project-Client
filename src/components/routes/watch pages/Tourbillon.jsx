@@ -1,33 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import banner from "../img/banner.webp";
-import desertImg from "../img/desert.jpg";
-import { API_URL } from "../../services/apiService";
+import React from 'react'
+// import banner from './img/banner.webp'
+import { Link } from 'react-router-dom'
+// import desertImg from ".../img/dese";
 
-const Watches = ({ watches }) => {
+const Tourbillon = ({watches}) => {
 
-  const featuredWatches = async() => {
-      const url = API_URL + "/watches/featured"
-      const {data} = await axios({
-          url:url
-      })
-      setFeatured(data);
-  }
-
-  useEffect(() => {
-    featuredWatches();
-  }, [])
-  
-
-  const [featured, setFeatured] = useState([])
+    const tourbillonWatches = watches.filter((item) => item.name == "nautilus")
 
   return (
     <div className="">
       <div className="">
         <img
           className="object-cover w-[100vw] h-[350px] -z-10 absolute"
-          src={banner}
+          src={''}
+        //   src={banner}
           alt=""
         />
         <div className="h-[350px] w-[30%] text-white flex flex-col items-center justify-center">
@@ -52,7 +38,7 @@ const Watches = ({ watches }) => {
       <div className="p-16">
         <h4 className="text-3xl ml-4 mb-8">Explore Our Refined Timepieces</h4>
         <div className="grid grid-cols-4 max-lg:grid-cols-2 max-md:grid-cols-1 gap-6 p-1">
-          {featured.map((item, i) => (
+          {tourbillonWatches.map((item, i) => (
             <article key={i} className="bg-white p-3 rounded-3xl shadow-md hover:shadow-xl duration-300">
               <Link to={"/product/" + item._id}>
               <div>
@@ -78,7 +64,8 @@ const Watches = ({ watches }) => {
       {/*  */}
       <div className="-z-10 relative">
         <img
-          src={desertImg}
+          src={''}
+        //   src={desertImg}
           className="gradient-to-b from-black to-slate-500"
           alt=""
         />
@@ -113,7 +100,7 @@ const Watches = ({ watches }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Watches;
+export default Tourbillon

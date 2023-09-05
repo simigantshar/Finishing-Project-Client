@@ -24,6 +24,48 @@ const Header = () => {
   // const [setting1value, setSetting1value] = useState("initialValue1");
   // const [setting2value, setSetting2value] = useState(false);
 
+  const shopObj = [
+    {
+      type:"Watches",
+      f1:"Vintage",
+      link1:"/watches",
+      f2:"Luxury",
+      link2:"/watches",
+      f3:"Curv",
+      link3:"/watches",
+      f4:"Heritage",
+      link4:"/watches",
+      f5:"Tourbillons",
+      link5:"/tourbillons",
+    },
+    {
+      type:"Bands",
+      f1:"Vintage",
+      link1:"/bands",
+      f2:"Luxury",
+      link2:"/bands",
+      f3:"Curv",
+      link3:"/bands",
+      f4:"Heritage",
+      link4:"/bands",
+      f5:"Signature",
+      link5:"/bands",
+    },
+    {
+      type:"Cufflinks",
+      f1:"Vintage",
+      link1:"/cufflinks",
+      f2:"Luxury",
+      link2:"/cufflinks",
+      f3:"Curv",
+      link3:"/cufflinks",
+      f4:"Heritage",
+      link4:"/cufflinks",
+      f5:"Signature",
+      link5:"/cufflinks",
+    }
+  ]
+
   const [isMobileNav, setMobileNav] = useState(false);
 
   const existingClass =
@@ -43,30 +85,62 @@ const Header = () => {
         <div className="h-full w-[50%] flex justify-start items-end">
           <div className="h-[50px] w-[90%] flex justify-between items-center bg-gradient-to-r from-[#9a9a9a] font-bold">
             <div className="flex justify-end items-center w-full h-full relative">
-              <Link
+              <div
                 onMouseOver={() => setTruth(true)}
                 onMouseLeave={() => setTruth(false)}
                 className="hover:text-[#bd8334] tracking-widest hover:transition flex items-center duration-1000 hover:scale-105"
                 to={"/watches"}
               >
-                Shop {truth && <GoChevronDown />}
-              </Link>
-              
+                <div className="dropdown dropdown-hover">
+                  <label tabIndex={0} className="flex items-center">
+                    Shop
+                  </label>
+                  <div
+                    tabIndex={0}
+                    className="dropdown-content flex justify-between z-[1] menu p-2 shadow bg-base-100 rounded-md w-[400px]"
+                  >
+                    <div className="w-full flex justify-between">
+                      {shopObj.map((item, i) => (
+                        <div key={i} className="text-lg font-thin text-yellow-700">
+                          <div className="text-xl font-bold text-yellow-800">
+                            {item.type}
+                          </div>
+                          <Link to={item.link1}>
+                            <div>{item.f1}</div>
+                          </Link>
+                          <Link to={item.link2}>
+                            <div>{item.f2}</div>
+                          </Link>
+                          <Link to={item.link3}>
+                            <div>{item.f3}</div>
+                          </Link>
+                          <Link to={item.link4}>
+                            <div>{item.f4}</div>
+                          </Link>
+                          <Link to={item.link5}>
+                            <div>{item.f5}</div>
+                          </Link>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div className="flex justify-center items-center w-full h-full">
               <Link
                 className="hover:text-[#bd8334] tracking-widest hover:transition duration-1000 hover:scale-105"
-                to={"/bands"}
+                to={"/"}
               >
-                Bands
+                About
               </Link>
             </div>
             <div className="flex justify-center items-center w-full h-full">
               <Link
                 className="hover:text-[#bd8334] tracking-widest mr-9 hover:transition duration-1000 hover:scale-105"
-                to={"/cufflinks"}
+                to={"/"}
               >
-                Cufflinks
+                Retailer's
               </Link>
             </div>
           </div>
@@ -96,28 +170,27 @@ const Header = () => {
                   />
                 </Link>
               ) : (
-                
-                  <div className="dropdown">
-                    <label tabIndex={0} className="m-1">
-                      <AiOutlineHeart
-                        className="hover:text-[#bd8434]"
-                        size={"23px"}
-                      />
-                    </label>
-                    <div className="flex flex-col justify-between items-center -mt-[16px] h-20 -ml-[100px] dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-56">
-                      <p className="text-[16px]">
-                        You need to sign in to favorite!
-                      </p>
-                      <button
-                        type="button"
-                        onClick={() => nav("/login")} // Replace '/login' with your desired route
-                        tabIndex={0}
-                        className="bg-gray-300 rounded-md p-1 text-[18px] w-[50%]"
-                      >
-                        Sign In
-                      </button>
-                    </div>
+                <div className="dropdown">
+                  <label tabIndex={0} className="m-1">
+                    <AiOutlineHeart
+                      className="hover:text-[#bd8434]"
+                      size={"23px"}
+                    />
+                  </label>
+                  <div className="flex flex-col justify-between items-center -mt-[16px] h-20 -ml-[100px] dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-56">
+                    <p className="text-[16px]">
+                      You need to sign in to favorite!
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => nav("/login")} // Replace '/login' with your desired route
+                      tabIndex={0}
+                      className="bg-gray-300 rounded-md p-1 text-[18px] w-[50%]"
+                    >
+                      Sign In
+                    </button>
                   </div>
+                </div>
               )}
             </div>
             <div>

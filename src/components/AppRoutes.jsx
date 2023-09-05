@@ -16,9 +16,10 @@ import Account from "./routes/Account";
 import Cart from "./routes/Cart";
 import Favorites from "./routes/Favorites";
 import AdminLogIn from "./routes/Admin/AdminLogIn";
+import CheckToken from "./routes/CheckToken";
+import Tourbillon from "./routes/watch pages/Tourbillon";
 
 const AppRoutes = () => {
-
   const [cufflinks, setCufflinks] = useState([]);
   const [bands, setBands] = useState([]);
   const [watches, setWatches] = useState([]);
@@ -26,11 +27,11 @@ const AppRoutes = () => {
   const getCufflinks = async () => {
     setCufflinks(await getApi("/cufflinks"));
   };
-  
+
   const getBands = async () => {
     setBands(await getApi("/bands"));
   };
-  
+
   const getWatches = async () => {
     setWatches(await getApi("/watches"));
   };
@@ -43,11 +44,15 @@ const AppRoutes = () => {
 
   return (
     <Router>
+      <CheckToken />
       <Routes>
         <Route path="/adminLogin" element={<AdminLogIn />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="/watches" element={<Watches  watches={watches} />} />
+          {/*  */}
+          <Route path="/watches" element={<Watches watches={watches} />} />
+          <Route path="/tourbillons" element={<Tourbillon watches={watches} />} />
+          {/*  */}
           <Route path="/bands" element={<Bands bands={bands} />} />
           <Route
             path="/cufflinks"

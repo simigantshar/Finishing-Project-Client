@@ -22,21 +22,21 @@ const LogIn = () => {
     apiLogin(bodyData);
   };
 
-  const example = async () => {
-    const url = API_URL + "/users/checkToken";
-    const { data } = await axios({
-      url: url,
-      method: "GET",
-      headers: {
-        "x-api-key":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGMyNDZjMDE0NWFhMWUyNWIwMGFhYTciLCJyb2xlIjoic3VwZXJhZG1pbiIsImlhdCI6MTY5MTU3OTA4MCwiZXhwIjoxNjkxNTgyNjgwfQ.FAFvzaMhaStlQIBpsFFk0SD-XZCKM77aMGBjDxGVRD4",
-      },
-    });
-    console.log(data);
-  };
+  // const example = async () => {
+  //   const url = API_URL + "/users/checkToken";
+  //   const { data } = await axios({
+  //     url: url,
+  //     method: "GET",
+  //     headers: {
+  //       "x-api-key":
+  //         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGMyNDZjMDE0NWFhMWUyNWIwMGFhYTciLCJyb2xlIjoic3VwZXJhZG1pbiIsImlhdCI6MTY5MTU3OTA4MCwiZXhwIjoxNjkxNTgyNjgwfQ.FAFvzaMhaStlQIBpsFFk0SD-XZCKM77aMGBjDxGVRD4",
+  //     },
+  //   });
+  //   console.log(data);
+  // };
 
   useEffect(() => {
-    example();
+    // example();
   }, []);
 
   const apiLogin = async (bodyData) => {
