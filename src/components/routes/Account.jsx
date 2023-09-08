@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import userLoggedIn from "../img/userLoggedIn.png";
 import { BiPen } from "react-icons/bi";
 import { FiCheck } from "react-icons/fi";
 import { HiOutlineX } from "react-icons/hi";
@@ -63,7 +62,7 @@ const Account = () => {
       <div className="m-[70px]">
         <div className="flex">
           <div className="bg-gray-200 rounded-s-full h-[75px] w-fit pr-7 rounded-e-[3000px] flex items-center">
-            <img src={userInfo.pfp? userInfo.pfp : userLoggedIn} className="h-[90px]" alt="" />
+            <img src={userInfo.pfp? userInfo.pfp : "https://res.cloudinary.com/dbkctdxui/image/upload/v1693913816/ifzpgpsvgsz6rjtqjgsd.png"} className="h-[90px]" alt="" />
             <input
               type="text"
               value={userInfo.name}

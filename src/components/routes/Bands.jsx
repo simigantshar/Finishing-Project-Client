@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import watchBand from "../img/watchBands.webp";
-import watchBand2 from "../img/watchBands2.jpg";
-import watchBand3 from "../img/watchBands3.jpg";
-import { API_URL } from "../../services/apiService";
 const Bands = ({ bands, isLoading }) => {
   return (
     <div>
-      <img src={watchBand} className="object-cover w-full" alt="" />
+      <img src={"https://res.cloudinary.com/dbkctdxui/image/upload/v1693913866/vigtp28vajiixmadtsnt.jpg"} className="object-cover w-full" alt="" />
       {/*  */}
       <div>{/* filters div */}</div>
       {/*  */}

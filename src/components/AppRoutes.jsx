@@ -51,7 +51,7 @@ const AppRoutes = () => {
           <Route index element={<Home />} />
           {/*  */}
           <Route path="/watches" element={<Watches watches={watches} />} />
-          <Route path="/tourbillons" element={<Tourbillon watches={watches} />} />
+          <Route path="/watches/tourbillons" element={<Tourbillon watches={watches} />} />
           {/*  */}
           <Route path="/bands" element={<Bands bands={bands} />} />
           <Route

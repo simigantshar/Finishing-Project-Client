@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import banner from "../img/banner.webp";
-import desertImg from "../img/desert.jpg";
 import { API_URL } from "../../services/apiService";
 
 const Watches = ({ watches }) => {
@@ -17,6 +15,7 @@ const Watches = ({ watches }) => {
 
   useEffect(() => {
     featuredWatches();
+    window.scroll(0, 0)
   }, [])
   
 
@@ -27,7 +26,7 @@ const Watches = ({ watches }) => {
       <div className="">
         <img
           className="object-cover w-[100vw] h-[350px] -z-10 absolute"
-          src={banner}
+          src={"https://res.cloudinary.com/dbkctdxui/image/upload/v1693913618/him5kwn4n8ghzkrojjvl.webp"}
           alt=""
         />
         <div className="h-[350px] w-[30%] text-white flex flex-col items-center justify-center">
@@ -78,7 +77,7 @@ const Watches = ({ watches }) => {
       {/*  */}
       <div className="-z-10 relative">
         <img
-          src={desertImg}
+          src={"https://res.cloudinary.com/dbkctdxui/image/upload/v1693913771/ko0w1lh0yswxpzafdhky.jpg"}
           className="gradient-to-b from-black to-slate-500"
           alt=""
         />

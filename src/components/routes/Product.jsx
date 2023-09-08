@@ -7,8 +7,6 @@ import { BsCartCheck } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { VscHeart } from "react-icons/vsc";
 import { FcLike } from "react-icons/fc";
-import cufflinksAd from "../img/cufflinksAd.jpeg";
-import cufflinksSpecial from "../img/cufflinksSpecial.webp";
 
 export const Product = ({ products }) => {
   const { productId } = useParams();
@@ -214,7 +212,7 @@ export const Product = ({ products }) => {
             <div className="w-[30%]">
               <img
                 className="h-full w-full object-cover"
-                src={cufflinksSpecial}
+                src={"https://res.cloudinary.com/dbkctdxui/image/upload/v1693913745/fcw0putjjdlfktaqasgz.webp"}
                 alt=""
               />
             </div>
@@ -226,7 +224,7 @@ export const Product = ({ products }) => {
             <div className="w-[25%] flex items-center">
               <img
                 className="h-full w-full object-cover"
-                src={cufflinksAd}
+                src={"https://res.cloudinary.com/dbkctdxui/image/upload/v1693913731/y9jfyfh9qapprtzwf9kg.jpg"}
                 alt=""
               />
             </div>
@@ -424,7 +422,7 @@ export const Product = ({ products }) => {
             <div className="w-[30%]">
               <img
                 className="h-full w-full object-cover"
-                src={cufflinksSpecial}
+                src={"https://res.cloudinary.com/dbkctdxui/image/upload/v1693913745/fcw0putjjdlfktaqasgz.webp"}
                 alt=""
               />
             </div>
@@ -436,7 +434,7 @@ export const Product = ({ products }) => {
             <div className="w-[25%] flex items-center">
               <img
                 className="h-full w-full object-cover"
-                src={cufflinksAd}
+                src={"https://res.cloudinary.com/dbkctdxui/image/upload/v1693913731/y9jfyfh9qapprtzwf9kg.jpg"}
                 alt=""
               />
             </div>
@@ -634,7 +632,7 @@ export const Product = ({ products }) => {
             <div className="w-[30%]">
               <img
                 className="h-full w-full object-cover"
-                src={cufflinksSpecial}
+                src={"https://res.cloudinary.com/dbkctdxui/image/upload/v1693913745/fcw0putjjdlfktaqasgz.webp"}
                 alt=""
               />
             </div>
@@ -646,7 +644,7 @@ export const Product = ({ products }) => {
             <div className="w-[25%] flex items-center">
               <img
                 className="h-full w-full object-cover"
-                src={cufflinksAd}
+                src={"https://res.cloudinary.com/dbkctdxui/image/upload/v1693913731/y9jfyfh9qapprtzwf9kg.jpg"}
                 alt=""
               />
             </div>

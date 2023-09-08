@@ -1,10 +1,9 @@
 import React from 'react'
-import img from '../img/watches.jpg'
 
 const Home = () => {
   return (
     <div className="">
-      <img className='object-cover object-center w-[100vw]' src={img} alt="A few watches in their cases in a nicely designed wooden box"/>
+      <img className='object-cover object-center w-[100vw]' src={"https://res.cloudinary.com/dbkctdxui/image/upload/v1693913877/zcxqynjqhp0z6wasvo7k.jpg"} alt="A few watches in their cases in a nicely designed wooden box"/>
     </div>   
   )
 }

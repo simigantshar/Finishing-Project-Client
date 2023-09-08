@@ -3,7 +3,6 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { HiOutlineArrowRight } from "react-icons/hi";
-import loginWatch from "../img/loginWatch.jpg";
 import { API_URL } from "../../services/apiService";
 
 const SignUp = () => {
@@ -89,7 +88,7 @@ const SignUp = () => {
                   },
                 })}
                 placeholder="example@gmail.com"
-                type="text"
+                type="email"
                 className="rounded px-1 py-px h-[33px]"
               />
               <label htmlFor="" className="mt-2">
@@ -110,7 +109,7 @@ const SignUp = () => {
                   },
                 })}
                 placeholder="Password.."
-                type="text"
+                type="password"
                 className="rounded px-1 py-px h-[33px]"
               />
               <div className="flex justify-between mt-4 mr-1">
@@ -127,7 +126,7 @@ const SignUp = () => {
       <div className="bg-gray-100 h-full w-[56%] max-md:w-[100vw]">
         <img
           className="object-cover object-right h-full w-full"
-          src={loginWatch}
+          src={"https://res.cloudinary.com/dbkctdxui/image/upload/v1693913798/tg3phfsjbponahpm2yxg.jpg"}
           alt=""
         />
       </div>

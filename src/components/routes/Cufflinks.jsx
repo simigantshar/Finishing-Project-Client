@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import cufflinksImg from "../img/cufflinks.jpg";
 import { Link } from "react-router-dom";
 
 const Cufflinks = ({ cufflinks }) => {
   return (
     <div>
       <div style={{ position: "relative" }}>
-        <img src={cufflinksImg} alt="" />
+        <img src={"https://res.cloudinary.com/dbkctdxui/image/upload/v1693913704/zyg8nj8uwtog43aotouv.jpg"} alt="" />
         <div className="h-[50px] w-full -mt-[50px] absolute bg-gradient-to-b from-white/0 to-[#ca9867]"></div>
       </div>
       {/*  */}
