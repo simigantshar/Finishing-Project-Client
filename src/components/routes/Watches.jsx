@@ -1,25 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { API_URL } from "../../services/apiService";
 
 const Watches = ({ watches }) => {
 
-  const featuredWatches = async() => {
-      const url = API_URL + "/watches/featured"
-      const {data} = await axios({
-          url:url
-      })
-      setFeatured(data);
-  }
+  const featured = watches.filter((item) => ["649a9f904105da10514dd622", "64a2a8cd322cc7edf2cfee02", "649bdb904e47fd3964acf63c", "649bd7494e47fd3964acf61c"].includes(item._id));
 
   useEffect(() => {
-    featuredWatches();
     window.scroll(0, 0)
   }, [])
-  
-
-  const [featured, setFeatured] = useState([])
 
   return (
     <div className="">

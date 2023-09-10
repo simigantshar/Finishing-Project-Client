@@ -18,6 +18,11 @@ import Favorites from "./routes/Favorites";
 import AdminLogIn from "./routes/Admin/AdminLogIn";
 import CheckToken from "./routes/CheckToken";
 import Tourbillon from "./routes/watch pages/Tourbillon";
+import Automatic from "./routes/watch pages/Automatic";
+import Skeleton from "./routes/watch pages/Skeleton";
+import MoonPhase from "./routes/watch pages/MoonPhase";
+import Chronograph from "./routes/watch pages/Chronograph";
+import AdminLayout from "./routes/Admin/adminLayout/AdminLayout";
 
 const AppRoutes = () => {
   const [cufflinks, setCufflinks] = useState([]);
@@ -47,11 +52,33 @@ const AppRoutes = () => {
       <CheckToken />
       <Routes>
         <Route path="/adminLogin" element={<AdminLogIn />} />
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<Home />} />
+        </Route>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           {/*  */}
           <Route path="/watches" element={<Watches watches={watches} />} />
-          <Route path="/watches/tourbillons" element={<Tourbillon watches={watches} />} />
+          <Route
+            path="/watches/tourbillons"
+            element={<Tourbillon watches={watches} />}
+          />
+          <Route
+            path="/watches/automatic"
+            element={<Automatic watches={watches} />}
+          />
+          <Route
+            path="/watches/skeleton"
+            element={<Skeleton watches={watches} />}
+          />
+          <Route
+            path="/watches/moon-phase"
+            element={<MoonPhase watches={watches} />}
+          />
+          <Route
+            path="/watches/chronographs"
+            element={<Chronograph watches={watches} />}
+          />
           {/*  */}
           <Route path="/bands" element={<Bands bands={bands} />} />
           <Route

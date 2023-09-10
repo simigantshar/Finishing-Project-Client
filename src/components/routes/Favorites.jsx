@@ -32,11 +32,11 @@ const Favorites = () => {
               <div
                 key={i}
                 onClick={() => nav("/product/" + item._id)}
-                className="my-5 grid grid-cols-8 grid-rows-2 gap-x-6 border-black/20 border p-5 rounded-xl"
+                className="my-5 grid grid-cols-8 grid-rows-2 gap-x-6 border-black/20 border p-4 rounded-xl"
               >
                 <img
-                  className="row-span-2 col-span-1"
-                  src={item.img_url}
+                  className="row-span-2 col-span-1 object-cover aspect-square rounded-md"
+                  src={item.img_url[0]}
                   alt=""
                 />
                 <div className="col-span-4 row-span-1">

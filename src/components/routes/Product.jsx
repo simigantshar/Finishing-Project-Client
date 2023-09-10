@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { TOKEN_KEY } from "../../services/apiService";
+import { TOKEN_KEY, getApiMethod } from "../../services/apiService";
 import { HiOutlineChevronDown } from "react-icons/hi";
 import { BsCartCheck } from "react-icons/bs";
 import { useEffect, useState } from "react";
@@ -17,7 +17,6 @@ export const Product = ({ products }) => {
   const [liked, setLiked] = useState(false);
   const [addedToCart, setAddedToCart] = useState(false);
   const [showPrice, setShowPrice] = useState(true);
-  const [showExplore, setShowExplore] = useState(false);
   const [selectImg, setSelectImg] = useState(product?.img_url[0]);
 
   const isFavorite = async () => {
@@ -137,14 +136,14 @@ export const Product = ({ products }) => {
                     {showPrice &&
                       (liked ? (
                         <FcLike
-                          size={25}
+                          size={24}
                           onClick={() => {
                             handleFavorite();
                           }}
                         />
                       ) : (
                         <VscHeart
-                          size={22}
+                          size={24}
                           onClick={() => {
                             handleFavorite();
                           }}
@@ -347,14 +346,14 @@ export const Product = ({ products }) => {
                     {showPrice &&
                       (liked ? (
                         <FcLike
-                          size={25}
+                          size={24}
                           onClick={() => {
                             handleFavorite();
                           }}
                         />
                       ) : (
                         <VscHeart
-                          size={22}
+                          size={24}
                           onClick={() => {
                             handleFavorite();
                           }}
@@ -557,14 +556,14 @@ export const Product = ({ products }) => {
                     {showPrice &&
                       (liked ? (
                         <FcLike
-                          size={25}
+                          size={24}
                           onClick={() => {
                             handleFavorite();
                           }}
                         />
                       ) : (
                         <VscHeart
-                          size={22}
+                          size={24}
                           onClick={() => {
                             handleFavorite();
                           }}

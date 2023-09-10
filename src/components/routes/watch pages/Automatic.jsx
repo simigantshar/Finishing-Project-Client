@@ -1,41 +1,41 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Tourbillon = ({watches}) => {
+const Automatic = ({watches}) => {
 
-    const tourbillonWatches = watches.filter((item) => item.name.toLowerCase().includes("tourbillon"))
+    const automaticWatches = watches.filter((item) => item.technology.toLowerCase().includes("automatic"))
 
   return (
     <div className="">
       <div className="">
         <img
-          className="object-cover w-[100vw] h-[500px] -z-10 absolute"
-          src={'https://res.cloudinary.com/dbkctdxui/image/upload/v1693915753/op1rpolcaxwrvhgrqkfw.webp'}
+          className="object-cover w-[100vw] h-[400px] -z-10 absolute"
+          src={'https://res.cloudinary.com/dbkctdxui/image/upload/v1694292628/gcibya2vsxplzb2qvbju.webp'}
           alt=""
         />
-        <div className="h-[500px] w-[40%] text-white flex flex-col items-center justify-center">
+        <div className="h-[400px] w-[35%] text-white flex flex-col items-center justify-center">
           <div className="text-center rounded-2xl max-lg:hidden">
-            <p className="text-3xl">The</p>
-            <p className="text-4xl hover:underline underline-offset-[5px] ">
-              Tourbillon
+            <p className="text-4xl hover:underline underline-offset-[5px]">Automatic</p>
+            <p className="text-3xl">
+              Movement
             </p>
-            <p className="mt-5 font-semibold text-[18px] tracking-[2px]">Complications at their finest</p>
+            <p className="mt-5 text-[18px] tracking-[2px]">Most complex movements<br/>in the watch industry</p>
           </div>
         </div>
         {/*  */}
         <div className="text-center rounded-2xl pt-5 lg:hidden">
-          <p className="text-3xl">The</p>
-          <p className="text-4xl hover:underline underline-offset-[4px] ">
-          Tourbillon
+          <p className="text-4xl hover:underline underline-offset-[5px]">Automatic</p>
+          <p className="text-3xl">
+          Movement
           </p>
-          <p className="mt-5 tracking-[4px]">Complications at their finest</p>
+          <p className="mt-5 tracking-[4px]">Most complex movements in the watch industry</p>
         </div>
       </div>
       {/*  */}
       <div className="p-16">
-        <h4 className="text-3xl ml-4 mb-8">Explore Our Tourbillon Timepieces</h4>
+        <h4 className="text-3xl ml-4 mb-8">Explore Our Automatic Timepieces</h4>
         <div className="grid grid-cols-4 max-lg:grid-cols-2 max-md:grid-cols-1 gap-6 p-1">
-          {tourbillonWatches.map((item, i) => (
+          {automaticWatches.map((item, i) => (
             <article key={i} className="bg-white p-3 rounded-3xl shadow-md hover:shadow-xl duration-300">
               <Link to={"/product/" + item._id}>
               <div>
@@ -60,4 +60,4 @@ const Tourbillon = ({watches}) => {
   )
 }
 
-export default Tourbillon
+export default Automatic

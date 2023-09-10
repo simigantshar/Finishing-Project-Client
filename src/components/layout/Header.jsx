@@ -38,7 +38,7 @@ const Header = () => {
   let headerHeight = 100;
 
   return (
-    <div onMouseLeave={() => setShowCollectionsDrop(true)}>
+    <div onMouseLeave={() => setShowCollectionsDrop(false)}>
       <div className={`h-[${headerHeight}px]`}>
         <div
           className={`flex justify-between items-center h-[${headerHeight}px] bg-gradient-to-b from-[#9a9a9a] to-[white] border-b border-[#E9C261] text-[#694017] max-md:hidden font text-[20px] fixed z-50 w-full`}
@@ -212,10 +212,11 @@ const Header = () => {
           </div>
         ) : null}
       </div>
-      {showCollectionsDrop && <CollectionsDrop />}
+      <div className="max-md:hidden">
+        {showCollectionsDrop && <CollectionsDrop />}
+      </div>
     </div>
   );
 };
-// light gold hex color: #E9C261
-// dark gold hex color: #BD8334
+
 export default Header;
