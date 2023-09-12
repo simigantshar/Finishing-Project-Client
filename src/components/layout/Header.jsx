@@ -13,7 +13,7 @@ import img2 from "./svg/Volare2.svg";
 import img3 from "./svg/Volare3.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { TOKEN_KEY } from "../../services/apiService";
-import CollectionsDrop from "./header dropdoens/CollectionsDrop";
+import CollectionsDrop from "./header dropdown/CollectionsDrop";
 
 const Header = () => {
   // Define as many global variables as your app needs, and hooks

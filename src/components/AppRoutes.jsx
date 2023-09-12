@@ -23,6 +23,11 @@ import Skeleton from "./routes/watch pages/Skeleton";
 import MoonPhase from "./routes/watch pages/MoonPhase";
 import Chronograph from "./routes/watch pages/Chronograph";
 import AdminLayout from "./routes/Admin/adminLayout/AdminLayout";
+import UsersList from "./routes/Admin/UsersList";
+import AdminWatches from "./routes/Admin/AdminWatches";
+import AdminCufflinks from "./routes/Admin/AdminCufflinks";
+import AdminBands from "./routes/Admin/AdminBands";
+import AdminProduct from "./routes/Admin/AdminProduct";
 
 const AppRoutes = () => {
   const [cufflinks, setCufflinks] = useState([]);
@@ -54,6 +59,12 @@ const AppRoutes = () => {
         <Route path="/adminLogin" element={<AdminLogIn />} />
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Home />} />
+          <Route path="/admin/watches" element={<AdminWatches watches={watches}/>}/>
+          <Route path="/admin/bands" element={<AdminBands bands={bands}/>}/>
+          <Route path="/admin/cufflinks" element={<AdminCufflinks cufflinks={cufflinks}/>}/>
+          <Route path="/admin/product/:productId" element={<AdminProduct products={[...watches, ...bands, ...cufflinks]} />}/>
+          <Route path="/admin/usersList" element={<UsersList/>} />
+          <Route path="*" element={<Page404 link={"/admin"}/>} />
         </Route>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
@@ -98,7 +109,7 @@ const AppRoutes = () => {
           <Route path="/account" element={<Account />} />
           <Route path="/creatingAccount" element={<CreatingAccount />} />
           <Route path="/test" element={<Test />} />
-          <Route path="*" element={<Page404 />} />
+          <Route path="*" element={<Page404 link={"/"} />} />
         </Route>
       </Routes>
     </Router>

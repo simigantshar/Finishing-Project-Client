@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom';
-
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import img from "./svg/volare1.svg";
+import img2 from "./svg/volare2.svg";
+import img3 from "./svg/volare3.svg";
+import { CiSearch, CiMenuBurger } from "react-icons/ci";
+import AdminCollectionsDrop from "./admin header dropdown/AdminCollectionsDrop";
 
 const AdminHeader = () => {
-
   const nav = useNavigate();
 
   // const [setting1value, setSetting1value] = useState("initialValue1");
@@ -26,7 +29,7 @@ const AdminHeader = () => {
     <div onMouseLeave={() => setShowCollectionsDrop(false)}>
       <div className={`h-[${headerHeight}px]`}>
         <div
-          className={`flex justify-between items-center h-[${headerHeight}px] bg-gradient-to-b from-[#9a9a9a] to-[white] border-b border-[#E9C261] text-[#694017] max-md:hidden font text-[20px] fixed z-50 w-full`}
+          className={`flex justify-between items-center h-[${headerHeight}px] bg-gradient-to-b from-[#643f3f] to-[#352929] border-b border-[#E9C261] text-[#22170b] max-md:hidden font text-[20px] fixed z-50 w-full`}
         >
           <div className="h-full w-[50%] flex justify-start items-end">
             <div className="h-[50px] w-[90%] flex justify-between items-center bg-gradient-to-r from-[#9a9a9a] font-bold">
@@ -51,15 +54,15 @@ const AdminHeader = () => {
               <div className="flex justify-center items-center w-full h-full">
                 <Link
                   className="hover:text-[#bd8334] tracking-widest mr-9 hover:transition duration-1000 hover:scale-105"
-                  to={"/"}
+                  to={"/admin/usersList"}
                 >
-                  Retailer's
+                  User's List
                 </Link>
               </div>
             </div>
           </div>
           <div className="flex justify-center items-center h-[90px]">
-            <Link to={"/"} className="h-[100px] flex items-center">
+            <Link to={"/admin"} className="h-[100px] flex items-center">
               <img className="min-h-[80px] h-[90px]" src={img3} alt="" />
             </Link>
           </div>
@@ -74,52 +77,17 @@ const AdminHeader = () => {
                   <CiSearch className="hover:text-[#bd8334]" />
                 </div>
               </div>
-              <div>
-                {localStorage[TOKEN_KEY] ? (
-                  <Link to={"/favorites"}>
-                    <AiOutlineHeart
-                      className="hover:text-[#bd8434]"
-                      size={"23px"}
-                    />
-                  </Link>
-                ) : (
-                  <div className="dropdown">
-                    <label tabIndex={0} className="m-1">
-                      <AiOutlineHeart
-                        className="hover:text-[#bd8434]"
-                        size={"23px"}
-                      />
-                    </label>
-                    <div className="flex flex-col justify-between items-center -mt-[16px] h-20 -ml-[100px] dropdown-content z-[1] menu p-2 shadow rounded-b-md bg-base-100 w-56">
-                      <p className="text-[16px]">
-                        You need to sign in to favorite!
-                      </p>
-                      <button
-                        type="button"
-                        onClick={() => nav("/login")} // Replace '/login' with your desired route
-                        tabIndex={0}
-                        className="bg-gray-300 rounded-md p-1 text-[18px] w-[50%]"
-                      >
-                        Sign In
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </div>
-              <div>
-                <Link to={"/cart"}>
-                  <SlHandbag className="hover:text-[#bd8334]" size={"20px"} />
-                </Link>
-              </div>
               {localStorage["products_token"] ? (
-                <div>
+                <div className="bg-white flex justify-between rounded-full border border-black/50 w-[125px]">
+                  <p className="leading-[32px] mx-auto mt-px text-[18px]">
+                    Admin
+                  </p>
                   <Link to={"/account"}>
-                    {" "}
                     <img
                       src={
                         "https://res.cloudinary.com/dbkctdxui/image/upload/v1693913816/ifzpgpsvgsz6rjtqjgsd.png"
                       }
-                      className="w-[28px]"
+                      className="h-[32px]"
                       alt=""
                     />
                   </Link>
@@ -198,10 +166,10 @@ const AdminHeader = () => {
         ) : null}
       </div>
       <div className="max-md:hidden">
-        {showCollectionsDrop && <CollectionsDrop />}
+        {showCollectionsDrop && <AdminCollectionsDrop />}
       </div>
     </div>
   );
 };
 
-export default AdminHeader
+export default AdminHeader;

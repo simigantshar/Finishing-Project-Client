@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { TOKEN_KEY, getApiMethod } from "../../services/apiService";
@@ -9,6 +8,7 @@ import { VscHeart } from "react-icons/vsc";
 import { FcLike } from "react-icons/fc";
 
 export const Product = ({ products }) => {
+  
   const { productId } = useParams();
   const product = products.find((p) => p._id === productId);
 
