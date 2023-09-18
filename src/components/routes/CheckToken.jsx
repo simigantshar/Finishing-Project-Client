@@ -13,7 +13,8 @@ const CheckToken = () => {
     } catch (error) {
         if(error.response.data && localStorage[TOKEN_KEY]){
             console.log(error.response.data);
-            localStorage.removeItem(TOKEN_KEY);
+            // localStorage.removeItem(TOKEN_KEY);
+            localStorage.clear();
             alert("Session expired!\nLogging you out!");
             nav("/");
             // window.location.href = "/";

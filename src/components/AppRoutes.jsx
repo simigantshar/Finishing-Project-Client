@@ -28,6 +28,7 @@ import AdminWatches from "./routes/Admin/AdminWatches";
 import AdminCufflinks from "./routes/Admin/AdminCufflinks";
 import AdminBands from "./routes/Admin/AdminBands";
 import AdminProduct from "./routes/Admin/AdminProduct";
+import AdminAccount from "./routes/Admin/AdminAccount";
 
 const AppRoutes = () => {
   const [cufflinks, setCufflinks] = useState([]);
@@ -62,7 +63,8 @@ const AppRoutes = () => {
           <Route path="/admin/watches" element={<AdminWatches watches={watches}/>}/>
           <Route path="/admin/bands" element={<AdminBands bands={bands}/>}/>
           <Route path="/admin/cufflinks" element={<AdminCufflinks cufflinks={cufflinks}/>}/>
-          <Route path="/admin/product/:productId" element={<AdminProduct products={[...watches, ...bands, ...cufflinks]} />}/>
+          <Route path="/admin/product/:_id" element={<AdminProduct products={[...watches, ...bands, ...cufflinks]} />}/>
+          <Route path="/admin/account" element={<AdminAccount />} />
           <Route path="/admin/usersList" element={<UsersList/>} />
           <Route path="*" element={<Page404 link={"/admin"}/>} />
         </Route>

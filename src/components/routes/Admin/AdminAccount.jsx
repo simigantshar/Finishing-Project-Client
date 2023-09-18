@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { BiPen } from "react-icons/bi";
 import { FiCheck } from "react-icons/fi";
 import { HiOutlineX } from "react-icons/hi";
-import { API_URL, TOKEN_KEY } from "../../services/apiService";
+import { API_URL, TOKEN_KEY } from "../../../services/apiService";
 
-const Account = () => {
+const AdminAccount = () => {
 
   const [userInfo, setUserInfo] = useState({});
 
@@ -103,24 +103,22 @@ const Account = () => {
             />
           </div>
         </div>
-        <div className="mt-20">
-        {userInfo.role === "admin" || userInfo.role === "superadmin" && <div className="mt-20 border-t border-black">
-          <button onClick={() => nav("/admin")} className="text-lg hover:bg-gray-100 p-3">
-            Switch to Admin mode
+        <div className="mt-20 border-y border-black">
+          <button onClick={() => nav("/")} className="text-lg hover:bg-gray-100 p-3">
+            Switch to User mode
           </button>
-        </div>}
-        <div className="border-y border-black">
+        </div>
+        <div className="border-b border-black">
           <button onClick={logOut} className="text-lg hover:bg-gray-100 p-3">
             Log Out
           </button>
-        </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default Account;
+export default AdminAccount;
 
 {
   /* <div>

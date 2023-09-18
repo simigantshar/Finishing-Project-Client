@@ -4,6 +4,8 @@ import img from "./svg/volare1.svg";
 import img2 from "./svg/volare2.svg";
 import img3 from "./svg/volare3.svg";
 import { CiSearch, CiMenuBurger } from "react-icons/ci";
+import { LiaUserCircle } from "react-icons/lia";
+import { TfiClose } from "react-icons/tfi";
 import AdminCollectionsDrop from "./admin header dropdown/AdminCollectionsDrop";
 
 const AdminHeader = () => {
@@ -82,7 +84,7 @@ const AdminHeader = () => {
                   <p className="leading-[32px] mx-auto mt-px text-[18px]">
                     Admin
                   </p>
-                  <Link to={"/account"}>
+                  <Link to={"/admin/account"}>
                     <img
                       src={
                         "https://res.cloudinary.com/dbkctdxui/image/upload/v1693913816/ifzpgpsvgsz6rjtqjgsd.png"

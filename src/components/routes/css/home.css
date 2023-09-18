@@ -1,0 +1,31 @@
+.zoomIn-css {
+  transition: 0.8s ease-in-out;
+}
+
+.LimgDiv-css {
+  transition: 0.8s ease-in-out;
+}
+
+.MimgDiv-css {
+  transition: 0.8s ease-in-out;
+}
+
+.RimgDiv-css {
+  transition: 0.8s ease-in-out;
+}
+
+.showContent-css:hover .zoomIn-css {
+  transform: scale(1.05);
+}
+
+.showContent-css:hover .LimgDiv-css{
+    background-color: rgb(173, 20, 20);
+}
+
+.showContent-css:hover .MimgDiv-css{
+    background-color: rgb(0, 0, 0);
+}
+
+.showContent-css:hover .RimgDiv-css{
+    background-color: rgb(0,0,92);
+}
