@@ -1,8 +1,10 @@
 import React from "react";
 import './css/home.css'
 import { SlArrowDown } from "react-icons/sl";
+import {AiOutlineRight}from 'react-icons/ai'
 
 const Home = () => {
+
   return (
     <div className="">
       <div className="grid md:grid-cols-3 max-md:grid-flow-row max-md:grid-cols-1 relative">
@@ -45,7 +47,8 @@ const Home = () => {
       <div>
         <div className="grid grid-cols-3 m-16 bg-yellow-400 h-[460px] mt-[200px]">
           <div className="relative h-[460px] overflow-hidden showContent-css">
-          <div className="absolute h-[100px] z-10 bottom-0 w-full LimgDiv-css"></div>
+          {/* <div className="absolute h-[100px] z-10 bottom-0 w-full LimgDiv-css"><p className="p-2 flex items-center text-white text-xl font-semibold">Explore Sports Watches<AiOutlineRight size={15} className="mt-[5px]"/></p></div> */}
+          <div className="absolute h-[100px] z-10 bottom-0 w-full LimgDiv-css"><p className="flex items-center text-white text-xl font-semibold">Explore Sports Watches<AiOutlineRight size={15} className="mt-[5px]"/></p></div>
             <img
               className="h-full w-full object-cover zoomIn-css"
               src="https://res.cloudinary.com/dbkctdxui/image/upload/v1694763097/ndccrzgfvboqcx5paojt.png"
