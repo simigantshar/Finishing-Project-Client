@@ -4,9 +4,6 @@
 
 .LimgDiv-css {
   transition: 0.8s ease-in-out;
-  display: flex;
-  justify-items: center;
-  align-items: end;
 }
 
 .MimgDiv-css {
@@ -23,15 +20,18 @@
 
 .showContent-css:hover .LimgDiv-css{
     background-color: rgb(173, 20, 20, 0.8);
-    display: flex;
-    justify-content: end;
-    transition-property: justify-content; /* Specify the properties to transition */
-  transition-duration: 0.3s; /* Duration of the transition */
-  transition-timing-function: ease;
 }
 
 .showContent-css:hover .MimgDiv-css{
-    background-color: rgb(0, 0, 0, 0.8);
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.chColor-css{
+    transition: all 0.8s ease-in-out;
+}
+
+.showContent-css:hover .chColor-css{
+    color: black;
 }
 
 .showContent-css:hover .RimgDiv-css{
