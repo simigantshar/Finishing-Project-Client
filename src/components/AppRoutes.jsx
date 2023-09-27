@@ -29,6 +29,8 @@ import AdminCufflinks from "./routes/Admin/AdminCufflinks";
 import AdminBands from "./routes/Admin/AdminBands";
 import AdminProduct from "./routes/Admin/AdminProduct";
 import AdminAccount from "./routes/Admin/AdminAccount";
+import Brands from "./routes/watch pages/Brands";
+import Checkout from "./routes/Checkout";
 
 const AppRoutes = () => {
   const [cufflinks, setCufflinks] = useState([]);
@@ -60,13 +62,24 @@ const AppRoutes = () => {
         <Route path="/adminLogin" element={<AdminLogIn />} />
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Home />} />
-          <Route path="/admin/watches" element={<AdminWatches watches={watches}/>}/>
-          <Route path="/admin/bands" element={<AdminBands bands={bands}/>}/>
-          <Route path="/admin/cufflinks" element={<AdminCufflinks cufflinks={cufflinks}/>}/>
-          <Route path="/admin/product/:_id" element={<AdminProduct products={[...watches, ...bands, ...cufflinks]} />}/>
+          <Route
+            path="/admin/watches"
+            element={<AdminWatches watches={watches} />}
+          />
+          <Route path="/admin/bands" element={<AdminBands bands={bands} />} />
+          <Route
+            path="/admin/cufflinks"
+            element={<AdminCufflinks cufflinks={cufflinks} />}
+          />
+          <Route
+            path="/admin/product/:_id"
+            element={
+              <AdminProduct products={[...watches, ...bands, ...cufflinks]} />
+            }
+          />
           <Route path="/admin/account" element={<AdminAccount />} />
-          <Route path="/admin/usersList" element={<UsersList/>} />
-          <Route path="*" element={<Page404 link={"/admin"}/>} />
+          <Route path="/admin/usersList" element={<UsersList />} />
+          <Route path="*" element={<Page404 link={"/admin"} />} />
         </Route>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
@@ -92,6 +105,8 @@ const AppRoutes = () => {
             path="/watches/chronographs"
             element={<Chronograph watches={watches} />}
           />
+          <Route path="/watches/brands" element={<Brands />} />
+          <Route path="/checkout" element={<Checkout/>}/>
           {/*  */}
           <Route path="/bands" element={<Bands bands={bands} />} />
           <Route

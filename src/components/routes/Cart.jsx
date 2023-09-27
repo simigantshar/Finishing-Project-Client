@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { FcLike } from "react-icons/fc";
+import {PiCaretRightThin} from 'react-icons/pi'
 import { getApi, getApiMethod } from "../../services/apiService";
 import { useNavigate } from "react-router-dom";
 
@@ -89,6 +90,9 @@ const Cart = () => {
                 </div>
               </div>
             ))}
+            <div className=" w-[95%] flex justify-end items-end h-[80px]">
+              <button onClick={() => nav("/checkout")} className="font-thin text-xl hover:text-[#b8994b] flex items-center">Proceed to Checkout<PiCaretRightThin className="mt-[4.5px]"/></button>
+            </div>
           </div>
         ) : (
           <div className="flex justify-center text-2xl text-gray-400 font-thin mt-14">

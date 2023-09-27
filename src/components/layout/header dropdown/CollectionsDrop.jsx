@@ -4,11 +4,9 @@ import { RiArrowRightSLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
 const CollectionsDrop = () => {
-
-  const [watches, setWatches] = useState(false)
-  const [brands, setBrands] = useState(false)
-  const [collections, setCollections] = useState(false)
-
+  const [watches, setWatches] = useState(false);
+  const [brands, setBrands] = useState(false);
+  const [collections, setCollections] = useState(false);
 
   const shop = ["Watches", "Bands", "Cufflinks"];
 
@@ -42,174 +40,218 @@ const CollectionsDrop = () => {
     link4: "/watches/h-moser-&-cie",
     f5: "A. LANGE & SÖHNE",
     link5: "/watches/a-lange-&-söhne",
-    f6: "DE BETHUNE",
-    link6: "/watches/de-bethune",
+    f6: "All Brands",
+    link6: "/watches/brands",
   };
 
-  // console.log(watchBrands.link4.toLowerCase())
+  const bands = {
+    type: "Bands",
+    f1: "Leather",
+    link1: "/bands/leather",
+    f2: "Rubber",
+    link2: "/bands/rubber",
+    f3: "Metal",
+    link3: "/bands/metal",
+    f4: "Perlon",
+    link4: "/bands/perlon",
+    f5: "Suede",
+    link5: "/bands/suede",
+    f6: "All Bands",
+    link6: "/bands",
+  };
 
-  // {
-  //   type: "Bands",
-  //   f1: "Leather",
-  //   link1: "/bands/leather",
-  //   f2: "Rubber",
-  //   link2: "/bands/rubber",
-  //   f3: "Metal",
-  //   link3: "/bands/metal",
-  //   f4: "Perlon",
-  //   link4: "/bands/perlon",
-  //   f5: "Suede",
-  //   link5: "/bands/suede",
-  //   f6: "All Bands",
-  //   link6: "/bands",
-  // },
-  // {
-  //   type: "Cufflinks",
-  //   f1: "Gear",
-  //   link1: "/cufflinks/gear",
-  //   f2: "Compass",
-  //   link2: "/cufflinks/compass",
-  //   f3: "Geneva",
-  //   link3: "/cufflinks/geneva",
-  //   f4: "Diver's",
-  //   link4: "/cufflinks/divers",
-  //   f5: "Watch Dial",
-  //   link5: "/cufflinks/watch-dial",
-  //   f6: "All Cufflinks",
-  //   link6: "/cufflinks",
-  // },
+  const cufflinks = {
+    type: "Cufflinks",
+    f1: "Gear",
+    link1: "/cufflinks/gear",
+    f2: "Compass",
+    link2: "/cufflinks/compass",
+    f3: "Geneva",
+    link3: "/cufflinks/geneva",
+    f4: "Diver's",
+    link4: "/cufflinks/divers",
+    f5: "Watch Dial",
+    link5: "/cufflinks/watch-dial",
+    f6: "All Cufflinks",
+    link6: "/cufflinks",
+  };
 
   return (
-    <div className="fixed z-50 py-4 bg-white w-full h-[60%]">
-      <div className="mx-20 grid grid-cols-4 h-full">
-        <div className="grid grid-flow-row h-[60%] border-r border-black">
-          {shop.map((item, i) => (
-            <Link
-            onMouseOver={() => {item === "Watches" && setWatches(true)}}
-              className="pl-6 hover:bg-gray-200 flex items-center"
-              to={item}
-            >
-              {" "}
-              {item}
-              <RiArrowRightSLine className="mt-1" />
-            </Link>
-          ))}
+    <div className="fixed z-50 py-3 px-10 bg-white w-full border-b border-[#E9C261] h-[60%]">
+      <div className="grid grid-cols-4 h-[12%]">
+        <div className="col-span-2">
+          <h2 className="text-2xl ml-1 font-semibold">{shop[0]}</h2>
         </div>
-        {/* //////////////////////////////////// */}
-        {watches && <div className="grid grid-flow-row h-[40%] border-r border-black">
-          {watchShop.map((item) => (
-            <Link
-              className="pl-6 hover:bg-gray-200 flex items-center"
-              to={item}
-            >
-              {" "}
-              {item}
-              <RiArrowRightSLine className="mt-1" />
+        <div className="col-span-1 ml-3">
+          <h2 className="text-2xl font-semibold">{shop[1]}</h2>
+        </div>
+        <div className="col-span-1 ml-3">
+          <h2 className="text-2xl font-semibold">{shop[2]}</h2>
+        </div>
+      </div>
+      <div className="grid grid-cols-4 h-[88%]">
+        <div className="col-span-2 grid grid-cols-2 grid-rows-3 border-r border-black/30">
+          <div className="flex flex-col">
+            <label htmlFor="" className="text-lg font-semibold">
+              Featured
+            </label>
+            <Link>
+              <label htmlFor="" className="">
+                coming soon...
+              </label>
             </Link>
-          ))}
-        </div>}
-        {/* //////////////////////////////////// */}
-        {brands && <div className="grid grid-flow-row h-[100%] border-r border-black">
-          <Link
-            className="pl-6 hover:bg-gray-200 flex items-center"
-            to={watchBrands.link1}
-          >
-            {" "}
-            {watchBrands.f1}
-            <RiArrowRightSLine className="mt-1" />
+          </div>
+          <div className="row-start-2 row-span-2 flex flex-col justify-between">
+            <label htmlFor="" className="text-lg font-semibold">
+              {watchShop[0]}
+            </label>
+            <Link to={watchBrands.link1}>
+              <label htmlFor="" className="hover:text-orange-400">
+                {watchBrands.f1}
+              </label>
+            </Link>
+            <Link to={watchBrands.link2}>
+              <label htmlFor="" className="hover:text-orange-400">
+                {watchBrands.f2}
+              </label>
+            </Link>
+            <Link to={watchBrands.link3}>
+              <label htmlFor="" className="hover:text-orange-400">
+                {watchBrands.f3}
+              </label>
+            </Link>
+            <Link to={watchBrands.link4}>
+              <label htmlFor="" className="hover:text-orange-400">
+                {watchBrands.f4}
+              </label>
+            </Link>
+            <Link to={watchBrands.link5}>
+              <label htmlFor="" className="hover:text-orange-400">
+                {watchBrands.f5}
+              </label>
+            </Link>
+            <Link to={watchBrands.link6}>
+              <label
+                htmlFor=""
+                className="flex items-center hover:text-orange-400 text-sm"
+              >
+                {watchBrands.f6}
+                <RiArrowRightSLine className="mt-[5px]" />
+              </label>
+            </Link>
+          </div>
+          <div className="row-start-2 row-span-2 flex flex-col justify-between ml-2">
+            <label htmlFor="" className="text-lg font-semibold">
+              {watchShop[1]}
+            </label>
+            <Link to={watchCollections.link1}>
+              <label htmlFor="" className="hover:text-orange-400">
+                {watchCollections.f1}
+              </label>
+            </Link>
+            <Link to={watchCollections.link2}>
+              <label htmlFor="" className="hover:text-orange-400">
+                {watchCollections.f2}
+              </label>
+            </Link>
+            <Link to={watchCollections.link3}>
+              <label htmlFor="" className="hover:text-orange-400">
+                {watchCollections.f3}
+              </label>
+            </Link>
+            <Link to={watchCollections.link4}>
+              <label htmlFor="" className="hover:text-orange-400">
+                {watchCollections.f4}
+              </label>
+            </Link>
+            <Link to={watchCollections.link5}>
+              <label htmlFor="" className="hover:text-orange-400">
+                {watchCollections.f5}
+              </label>
+            </Link>
+            <Link to={watchCollections.link6}>
+              <label
+                htmlFor=""
+                className="flex items-center hover:text-orange-400 text-sm"
+              >
+                {watchCollections.f6}
+                <RiArrowRightSLine className="mt-[5px]" />
+              </label>
+            </Link>
+          </div>
+        </div>
+        <div className="flex flex-col gap-y-1 mt-1 justify-between border-r border-black/30 ml-3">
+          <Link to={bands.link1}>
+            <label htmlFor="" className="hover:text-orange-400">
+              {bands.f1}
+            </label>
           </Link>
-          <Link
-            className="pl-6 hover:bg-gray-200 flex items-center"
-            to={watchBrands.link2}
-          >
-            {" "}
-            {watchBrands.f2}
-            <RiArrowRightSLine className="mt-1" />
+          <Link to={bands.link2}>
+            <label htmlFor="" className="hover:text-orange-400">
+              {bands.f2}
+            </label>
           </Link>
-          <Link
-            className="pl-6 hover:bg-gray-200 flex items-center"
-            to={watchBrands.link3}
-          >
-            {" "}
-            {watchBrands.f3}
-            <RiArrowRightSLine className="mt-1" />
+          <Link to={bands.link3}>
+            <label htmlFor="" className="hover:text-orange-400">
+              {bands.f3}
+            </label>
           </Link>
-          <Link
-            className="pl-6 hover:bg-gray-200 flex items-center"
-            to={watchBrands.link4}
-          >
-            {" "}
-            {watchBrands.f4}
-            <RiArrowRightSLine className="mt-1" />
+          <Link to={bands.link4}>
+            <label htmlFor="" className="hover:text-orange-400">
+              {bands.f4}
+            </label>
           </Link>
-          <Link
-            className="pl-6 hover:bg-gray-200 flex items-center"
-            to={watchBrands.link5}
-          >
-            {" "}
-            {watchBrands.f5}
-            <RiArrowRightSLine className="mt-1" />
+          <Link to={bands.link5}>
+            <label htmlFor="" className="hover:text-orange-400">
+              {bands.f5}
+            </label>
           </Link>
-          <Link
-            className="pl-6 hover:bg-gray-200 flex items-center"
-            to={watchBrands.link6}
-          >
-            {" "}
-            {watchBrands.f6}
-            <RiArrowRightSLine className="mt-1" />
+          <Link to={bands.link6}>
+            <label
+              htmlFor=""
+              className="flex items-center hover:text-orange-400 text-sm"
+            >
+              {bands.f6}
+              <RiArrowRightSLine className="mt-[5px]" />
+            </label>
           </Link>
-        </div>}
-        {/* //////////////////////////////////// */}
-        {collections && <div className="grid grid-flow-row h-[100%] border-r border-black">
-          <Link
-            className="pl-6 hover:bg-gray-200 flex items-center"
-            to={watchCollections.link1}
-          >
-            {" "}
-            {watchCollections.f1}
-            <RiArrowRightSLine className="mt-1" />
+        </div>
+        <div className="flex flex-col gap-y-1 mt-1 ml-3 justify-between">
+          <Link to={cufflinks.link1}>
+            <label htmlFor="" className="hover:text-orange-400">
+              {cufflinks.f1}
+            </label>
           </Link>
-          <Link
-            className="pl-6 hover:bg-gray-200 flex items-center"
-            to={watchCollections.link2}
-          >
-            {" "}
-            {watchCollections.f2}
-            <RiArrowRightSLine className="mt-1" />
+          <Link to={cufflinks.link2}>
+            <label htmlFor="" className="hover:text-orange-400">
+              {cufflinks.f2}
+            </label>
           </Link>
-          <Link
-            className="pl-6 hover:bg-gray-200 flex items-center"
-            to={watchCollections.link3}
-          >
-            {" "}
-            {watchCollections.f3}
-            <RiArrowRightSLine className="mt-1" />
+          <Link to={cufflinks.link3}>
+            <label htmlFor="" className="hover:text-orange-400">
+              {cufflinks.f3}
+            </label>
           </Link>
-          <Link
-            className="pl-6 hover:bg-gray-200 flex items-center"
-            to={watchCollections.link4}
-          >
-            {" "}
-            {watchCollections.f4}
-            <RiArrowRightSLine className="mt-1" />
+          <Link to={cufflinks.link4}>
+            <label htmlFor="" className="hover:text-orange-400">
+              {cufflinks.f4}
+            </label>
           </Link>
-          <Link
-            className="pl-6 hover:bg-gray-200 flex items-center"
-            to={watchCollections.link5}
-          >
-            {" "}
-            {watchCollections.f5}
-            <RiArrowRightSLine className="mt-1" />
+          <Link to={cufflinks.link5}>
+            <label htmlFor="" className="hover:text-orange-400">
+              {cufflinks.f5}
+            </label>
           </Link>
-          <Link
-            className="pl-6 hover:bg-gray-200 flex items-center"
-            to={watchCollections.link6}
-          >
-            {" "}
-            {watchCollections.f6}
-            <RiArrowRightSLine className="mt-1" />
+          <Link to={cufflinks.link6}>
+            <label
+              htmlFor=""
+              className="flex items-center hover:text-orange-400 text-sm"
+            >
+              {cufflinks.f6}
+              <RiArrowRightSLine className="mt-[5px]" />
+            </label>
           </Link>
-        </div>}
+        </div>
       </div>
     </div>
   );
