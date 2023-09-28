@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import "./header.css";
-import AppContext from "../../Context";
 import { CiMenuBurger } from "react-icons/ci";
 import { TfiClose } from "react-icons/tfi";
 import { SlHandbag } from "react-icons/sl";
 import { LiaUserCircle } from "react-icons/lia";
 import { CiSearch } from "react-icons/ci";
-import { GoChevronDown } from "react-icons/go";
 import { AiOutlineHeart } from "react-icons/ai";
 import img from "./svg/Volare1.svg";
 import img2 from "./svg/Volare2.svg";
@@ -16,13 +14,8 @@ import { TOKEN_KEY } from "../../services/apiService";
 import CollectionsDrop from "./header dropdown/CollectionsDrop";
 
 const Header = () => {
-  // Define as many global variables as your app needs, and hooks
-  // to set the state of the variable.
-
+  
   const nav = useNavigate();
-
-  // const [setting1value, setSetting1value] = useState("initialValue1");
-  // const [setting2value, setSetting2value] = useState(false);
 
   const [showCollectionsDrop, setShowCollectionsDrop] = useState(false);
 
