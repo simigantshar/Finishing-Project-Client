@@ -9,7 +9,7 @@ const CheckToken = () => {
   const getToken = async () => {
     try {
       const resp = await getApi("/users/checkToken");
-      console.log(resp);
+      // console.log(resp);
     } catch (error) {
         if(error.response.data && localStorage[TOKEN_KEY]){
             console.log(error.response.data);
