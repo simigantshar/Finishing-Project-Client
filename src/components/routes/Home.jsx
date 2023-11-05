@@ -48,7 +48,7 @@ const Home = () => {
       <div>
         <div className="grid grid-cols-3 m-16 bg-yellow-400 h-[460px] mt-[200px]">
           <div className="relative h-[460px] overflow-hidden showContent-css">
-            <Link to={"/cufflinks"}>
+            <Link to={"/watches"}>
               <div className="absolute h-[100px] z-10 bottom-0 w-full flex justify-center items-end pb-[19px] LimgDiv-css">
                 <p className="flex items-center text-white text-xl font-semibold">
                   Explore Sports Watches
@@ -63,7 +63,7 @@ const Home = () => {
             />
           </div>
           <div className="relative h-[460px] overflow-hidden showContent-css">
-            <Link to={"/cufflinks"}>
+            <Link to={"/watches"}>
               <div className="absolute h-[100px] z-10 bottom-0 w-full flex justify-center items-end pb-[19px] MimgDiv-css">
                 <p className="flex items-center text-white text-xl font-semibold chColor-css">
                   Explore Dress Watches
@@ -78,7 +78,7 @@ const Home = () => {
             />
           </div>
           <div className="relative h-[460px] overflow-hidden showContent-css">
-            <Link to={"/cufflinks"}>
+            <Link to={"/watches"}>
               <div className="absolute h-[100px] z-10 bottom-0 w-full flex justify-center items-end pb-[19px] RimgDiv-css">
                 <p className="flex items-center text-white text-xl font-semibold">
                   Explore Dive Watches

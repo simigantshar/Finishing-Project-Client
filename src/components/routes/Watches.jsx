@@ -1,20 +1,39 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Watches = ({ watches }) => {
+  const featured = watches.filter((item) =>
+    [
+      "649a9f904105da10514dd622",
+      "64a2a8cd322cc7edf2cfee02",
+      "649bdb904e47fd3964acf63c",
+      "649bd7494e47fd3964acf61c",
+    ].includes(item._id)
+  );
 
-  const featured = watches.filter((item) => ["649a9f904105da10514dd622", "64a2a8cd322cc7edf2cfee02", "649bdb904e47fd3964acf63c", "649bd7494e47fd3964acf61c"].includes(item._id));
+  const [value, setValue] = useState("");
+  const [count, setCount] = useState(0);
+
+  const filteredWatches = watches.filter((item) => {
+    return item.category.toLowerCase().includes(value.toLowerCase());
+  });
 
   useEffect(() => {
-    window.scroll(0, 0)
-  }, [])
+    // window.scroll(0, 0);
+  }, []);
+
+  useEffect(() => {
+    setCount(filteredWatches.length);
+  }, [filteredWatches]);
 
   return (
     <div className="">
       <div className="">
         <img
           className="object-cover w-[100vw] h-[350px] -z-10 absolute"
-          src={"https://res.cloudinary.com/dbkctdxui/image/upload/v1693913618/him5kwn4n8ghzkrojjvl.webp"}
+          src={
+            "https://res.cloudinary.com/dbkctdxui/image/upload/v1693913618/him5kwn4n8ghzkrojjvl.webp"
+          }
           alt=""
         />
         <div className="h-[350px] w-[30%] text-white flex flex-col items-center justify-center">
@@ -40,21 +59,24 @@ const Watches = ({ watches }) => {
         <h4 className="text-3xl ml-4 mb-8">Explore Our Refined Timepieces</h4>
         <div className="grid grid-cols-4 max-lg:grid-cols-2 max-md:grid-cols-1 gap-6 p-1">
           {featured.map((item, i) => (
-            <article key={i} className="bg-white p-3 rounded-3xl shadow-md hover:shadow-xl duration-300">
+            <article
+              key={i}
+              className="bg-white p-3 rounded-3xl shadow-md hover:shadow-xl duration-300"
+            >
               <Link to={"/product/" + item._id}>
-              <div>
-                <img
-                  className="h-[200px] w-full object-contain"
-                  src={item.img_url}
-                  alt=""
-                />
-              </div>
-              <div className="flex flex-col items-center justify-center h-[115px]">
-                <p className="text-center font-semibold leading-[24px] tracking-[1px]">
-                  {item.name}
-                  
-                </p>
-              </div></Link>
+                <div>
+                  <img
+                    className="h-[200px] w-full object-contain"
+                    src={item.img_url}
+                    alt=""
+                  />
+                </div>
+                <div className="flex flex-col items-center justify-center h-[115px]">
+                  <p className="text-center font-semibold leading-[24px] tracking-[1px]">
+                    {item.name}
+                  </p>
+                </div>
+              </Link>
             </article>
           ))}
         </div>
@@ -65,7 +87,9 @@ const Watches = ({ watches }) => {
       {/*  */}
       <div className="-z-10 relative">
         <img
-          src={"https://res.cloudinary.com/dbkctdxui/image/upload/v1693913771/ko0w1lh0yswxpzafdhky.jpg"}
+          src={
+            "https://res.cloudinary.com/dbkctdxui/image/upload/v1693913771/ko0w1lh0yswxpzafdhky.jpg"
+          }
           className="gradient-to-b from-black to-slate-500"
           alt=""
         />
@@ -74,8 +98,28 @@ const Watches = ({ watches }) => {
       {/*  */}
       <div className="p-20 bg-[#ececea]">
         <h4 className="text-3xl ml-4 mb-8">All Timepieces</h4>
+        <div className="mb-3 flex">
+          <h4 className="mr-1">Filter:</h4>
+          <select
+            onChange={(event) => {
+              setValue(event.target.value);
+            }}
+            value={value}
+            name=""
+            id=""
+            className="rounded"
+          >
+            <option value="">All</option>
+            <option value="sport">Sport</option>
+            <option value="dress">Dress</option>
+            <option value="casual">Casual</option>
+          </select>
+        </div>
+        <div className="mb-3">
+          <h4 className="text-4xl">{count} Results:</h4>
+        </div>
         <div className="grid grid-cols-4 max-lg:grid-cols-2 max-md:grid-cols-1 gap-5">
-          {watches.map((item, i) => (
+          {filteredWatches.map((item, i) => (
             <article
               key={i}
               className="bg-white p-3 rounded-2xl shadow-md hover:shadow-2xl duration-300"

@@ -14,7 +14,6 @@ import { TOKEN_KEY } from "../../services/apiService";
 import CollectionsDrop from "./header dropdown/CollectionsDrop";
 
 const Header = () => {
-  
   const nav = useNavigate();
 
   const [showCollectionsDrop, setShowCollectionsDrop] = useState(false);
@@ -77,7 +76,24 @@ const Header = () => {
                 <input
                   type="text"
                   className="rounded bg-white/80 w-[100%] -mr-[24px]"
+                  onInput={(e) => console.log(e.target.value)}
                 />
+                {/* <div className="dropdown dropdown-bottom">
+                  <label tabIndex={0} className="btn m-1">
+                    Click
+                  </label>
+                  <ul
+                    tabIndex={0}
+                    className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                  >
+                    <li>
+                      <a>Item 1</a>
+                    </li>
+                    <li>
+                      <a>Item 2</a>
+                    </li>
+                  </ul>
+                </div> */}
                 <div>
                   <CiSearch className="hover:text-[#bd8334]" />
                 </div>

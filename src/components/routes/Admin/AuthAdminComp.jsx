@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { API_URL, getApi } from '../../../apiService';
+import { getApi } from '../../../services/apiService';
 import { useNavigate } from 'react-router-dom';
 
 const AuthAdminComp = () => {
@@ -12,8 +12,9 @@ const AuthAdminComp = () => {
 
     const doApi = async() => {
         try {
-            const url = API_URL + "/users/checkToken";
+            const url = "/users/checkToken";
             const data = await getApi(url);
+            console.log(data)
             if(data.role != "superadmin" && data.role != "admin"){
             alert("You must be admin to access this area");
             nav("/login")

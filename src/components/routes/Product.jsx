@@ -8,7 +8,6 @@ import { VscHeart } from "react-icons/vsc";
 import { FcLike } from "react-icons/fc";
 
 export const Product = ({ products }) => {
-  
   const { productId } = useParams();
   const product = products.find((p) => p._id === productId);
 
@@ -38,7 +37,10 @@ export const Product = ({ products }) => {
   const handleFavorite = async () => {
     const token = localStorage.getItem(TOKEN_KEY);
     if (!token) {
-      return alert("You have to be logged in to favorite this product!");
+      if (confirm("You have to be logged in to favorite this product!")) {
+        nav("/login");
+      }
+      return;
     }
     const url = "/users/favorite/" + product?._id;
     setLiked(!liked);
@@ -211,7 +213,9 @@ export const Product = ({ products }) => {
             <div className="w-[30%]">
               <img
                 className="h-full w-full object-cover"
-                src={"https://res.cloudinary.com/dbkctdxui/image/upload/v1693913745/fcw0putjjdlfktaqasgz.webp"}
+                src={
+                  "https://res.cloudinary.com/dbkctdxui/image/upload/v1693913745/fcw0putjjdlfktaqasgz.webp"
+                }
                 alt=""
               />
             </div>
@@ -223,7 +227,9 @@ export const Product = ({ products }) => {
             <div className="w-[25%] flex items-center">
               <img
                 className="h-full w-full object-cover"
-                src={"https://res.cloudinary.com/dbkctdxui/image/upload/v1693913731/y9jfyfh9qapprtzwf9kg.jpg"}
+                src={
+                  "https://res.cloudinary.com/dbkctdxui/image/upload/v1693913731/y9jfyfh9qapprtzwf9kg.jpg"
+                }
                 alt=""
               />
             </div>
@@ -421,7 +427,9 @@ export const Product = ({ products }) => {
             <div className="w-[30%]">
               <img
                 className="h-full w-full object-cover"
-                src={"https://res.cloudinary.com/dbkctdxui/image/upload/v1693913745/fcw0putjjdlfktaqasgz.webp"}
+                src={
+                  "https://res.cloudinary.com/dbkctdxui/image/upload/v1693913745/fcw0putjjdlfktaqasgz.webp"
+                }
                 alt=""
               />
             </div>
@@ -433,7 +441,9 @@ export const Product = ({ products }) => {
             <div className="w-[25%] flex items-center">
               <img
                 className="h-full w-full object-cover"
-                src={"https://res.cloudinary.com/dbkctdxui/image/upload/v1693913731/y9jfyfh9qapprtzwf9kg.jpg"}
+                src={
+                  "https://res.cloudinary.com/dbkctdxui/image/upload/v1693913731/y9jfyfh9qapprtzwf9kg.jpg"
+                }
                 alt=""
               />
             </div>
@@ -631,7 +641,9 @@ export const Product = ({ products }) => {
             <div className="w-[30%]">
               <img
                 className="h-full w-full object-cover"
-                src={"https://res.cloudinary.com/dbkctdxui/image/upload/v1693913745/fcw0putjjdlfktaqasgz.webp"}
+                src={
+                  "https://res.cloudinary.com/dbkctdxui/image/upload/v1693913745/fcw0putjjdlfktaqasgz.webp"
+                }
                 alt=""
               />
             </div>
@@ -643,7 +655,9 @@ export const Product = ({ products }) => {
             <div className="w-[25%] flex items-center">
               <img
                 className="h-full w-full object-cover"
-                src={"https://res.cloudinary.com/dbkctdxui/image/upload/v1693913731/y9jfyfh9qapprtzwf9kg.jpg"}
+                src={
+                  "https://res.cloudinary.com/dbkctdxui/image/upload/v1693913731/y9jfyfh9qapprtzwf9kg.jpg"
+                }
                 alt=""
               />
             </div>

@@ -31,6 +31,8 @@ import AdminProduct from "./routes/Admin/AdminProduct";
 import AdminAccount from "./routes/Admin/AdminAccount";
 import Brands from "./routes/watch pages/Brands";
 import Checkout from "./routes/Checkout";
+import Brand from "./routes/watch pages/Brand";
+import AuthAdminComp from "./routes/Admin/AuthAdminComp";
 
 const AppRoutes = () => {
   const [cufflinks, setCufflinks] = useState([]);
@@ -60,7 +62,7 @@ const AppRoutes = () => {
       <CheckToken />
       <Routes>
         <Route path="/adminLogin" element={<AdminLogIn />} />
-        <Route path="/admin" element={<AdminLayout />}>
+        <Route path="/admin" element={<div><AdminLayout /><AuthAdminComp/></div>}>
           <Route index element={<Home />} />
           <Route
             path="/admin/watches"
@@ -85,6 +87,7 @@ const AppRoutes = () => {
           <Route index element={<Home />} />
           {/*  */}
           <Route path="/watches" element={<Watches watches={watches} />} />
+          <Route path="/watches/brands/:brand" element={<Brand watches={watches} />} />
           <Route
             path="/watches/tourbillons"
             element={<Tourbillon watches={watches} />}
