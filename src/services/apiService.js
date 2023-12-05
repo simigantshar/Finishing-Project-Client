@@ -1,11 +1,11 @@
 import axios from "axios";
-import { config } from "../../config/secret";
+// import { config } from "../../config/secret";
 
-export const API_URL = config.WEBSITE_URL
+export const API_URL ="http://localhost:3003";
 
 export const TOKEN_KEY = "products_token";
 
-export const TOKEN_SECRET = config.TOKEN_SECRET;
+export const TOKEN_SECRET = "x-api-key";
 
 export const getApi = async (url) => {
   try {
