@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const API_URL = "https://volare-horlogerie-server.cyclic.cloud";
+export const API_URL = "http://localhost:3003";
 
 export const TOKEN_KEY = "products_token";
 

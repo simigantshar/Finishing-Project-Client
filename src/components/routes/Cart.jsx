@@ -41,7 +41,8 @@ const Cart = () => {
   return (
     <div className="">
       <div className="m-16">
-        <h1 className="text-4xl font-thin">Shopping Bag</h1>
+        <h1 className="text-4xl font-thin">Shopping Cart:</h1>
+        <p className="mt-3 text-xl font-thin">Total ({cartAr.length}) items!</p>
         {cartAr.length > 0 ? (
           <div className="mt-10">
             {cartAr.map((item, i) => (

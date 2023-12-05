@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import startCase from "lodash/startCase";
 
@@ -7,6 +7,11 @@ const Brand = ({ watches }) => {
   const brand = watches.filter((item) =>
     item.company.toLowerCase().includes(params.brand)
   );
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [])
+  
 
   return (
     <div className="">

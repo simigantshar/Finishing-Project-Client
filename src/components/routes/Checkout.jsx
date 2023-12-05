@@ -52,7 +52,7 @@ const Checkout = () => {
         </p>
       </div>
       <div className="md:w-[50%] max-md:pt-4 flex justify-end items-end">
-      <button onClick={() => nav("/next")} className="font-thin text-xl hover:text-[#b8994b] flex items-center">Proceed<PiCaretRightThin className="mt-[4.5px]"/></button>
+      <button onClick={() => nav("/payment ")} className="font-thin text-xl hover:text-[#b8994b] flex items-center">Proceed<PiCaretRightThin className="mt-[4.5px]"/></button>
       </div>
     </div>
   );

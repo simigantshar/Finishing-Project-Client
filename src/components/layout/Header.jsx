@@ -13,14 +13,25 @@ import { Link, useNavigate } from "react-router-dom";
 import { TOKEN_KEY } from "../../services/apiService";
 import CollectionsDrop from "./header dropdown/CollectionsDrop";
 
-const Header = () => {
+const Header = ({ watches }) => {
   const nav = useNavigate();
+
+  const [searchInput, setSearchInput] = useState([]);
 
   const [showCollectionsDrop, setShowCollectionsDrop] = useState(false);
 
   const [isHovering, setIsHovering] = useState(false);
 
   const [isMobileNav, setMobileNav] = useState(false);
+
+  const sWatches = (wName) => {
+    const searchQ = watches.filter(
+      (item) =>
+        item.name.toLowerCase().includes(wName) ||
+        item.company.toLowerCase().includes(wName)
+    );
+    setSearchInput(searchQ);
+  };
 
   const existingClass =
     "flex justify-around relative items-center h-[100px] bg-gradient-to-r from-[#9a9a9a] md:hidden border-b";
@@ -50,9 +61,9 @@ const Header = () => {
               <div className="flex justify-center items-center w-full h-full">
                 <Link
                   className="hover:text-[#bd8334] tracking-widest hover:transition duration-1000 hover:scale-105"
-                  to={"/"}
+                  to={"/orders"}
                 >
-                  About
+                  Orders
                 </Link>
               </div>
               <div className="flex justify-center items-center w-full h-full">
@@ -72,12 +83,41 @@ const Header = () => {
           </div>
           <div className="h-full w-[50%] flex justify-end items-end">
             <div className="h-[50px] w-[90%] flex justify-between items-center pr-4 bg-gradient-to-l from-[#9a9a9a] font-bold">
-              <div className="flex items-center mr-1">
+              <div className="flex items-center mr-1 dropdown dropdown-bottom">
                 <input
+                  tabIndex={0}
                   type="text"
                   className="rounded bg-white/80 w-[100%] -mr-[24px]"
-                  onInput={(e) => console.log(e.target.value)}
+                  onInput={(e) => {
+                    e.target.value.length > 2
+                      ? sWatches(e.target.value)
+                      : setSearchInput([]);
+                  }}
                 />
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content mt-[10.4px] divide-y z-[1] font-sans menu p-2 shadow bg-base-100 w-[300px]"
+                >
+                  {searchInput.length > 0 ? (
+                    searchInput.map((item, i) => (
+                      <div
+                        key={i}
+                        onClick={() => nav("/product/" + item._id)}
+                        className="flex"
+                      >
+                        <img src={item.img_url} alt="" className="w-[40%]" />
+                        <div className="w-[60%] py-3 flex flex-col justify-between">
+                          <p>{item.name}</p>
+                          <p className="text-[]">{item.ref}</p>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <p className="font-thin text-xl flex justify-center items-center h-[40px]">
+                      No Results
+                    </p>
+                  )}
+                </ul>
                 {/* <div className="dropdown dropdown-bottom">
                   <label tabIndex={0} className="btn m-1">
                     Click

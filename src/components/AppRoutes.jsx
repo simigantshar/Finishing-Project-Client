@@ -7,7 +7,6 @@ import Watches from "./routes/Watches";
 import SignUp from "./routes/SignUp";
 import CreatingAccount from "./routes/CreatingAccount";
 import LogIn from "./routes/LogIn";
-import Test from "./routes/Test";
 import Bands from "./routes/Bands";
 import Cufflinks from "./routes/Cufflinks";
 import { Product } from "./routes/Product";
@@ -33,6 +32,9 @@ import Brands from "./routes/watch pages/Brands";
 import Checkout from "./routes/Checkout";
 import Brand from "./routes/watch pages/Brand";
 import AuthAdminComp from "./routes/Admin/AuthAdminComp";
+import Payment from "./routes/Payment";
+import PaymentCompleted from "./routes/PaymentCompleted";
+import Orders from "./routes/Orders";
 
 const AppRoutes = () => {
   const [cufflinks, setCufflinks] = useState([]);
@@ -62,7 +64,15 @@ const AppRoutes = () => {
       <CheckToken />
       <Routes>
         <Route path="/adminLogin" element={<AdminLogIn />} />
-        <Route path="/admin" element={<div><AdminLayout /><AuthAdminComp/></div>}>
+        <Route
+          path="/admin"
+          element={
+            <div>
+              <AdminLayout />
+              <AuthAdminComp />
+            </div>
+          }
+        >
           <Route index element={<Home />} />
           <Route
             path="/admin/watches"
@@ -83,11 +93,14 @@ const AppRoutes = () => {
           <Route path="/admin/usersList" element={<UsersList />} />
           <Route path="*" element={<Page404 link={"/admin"} />} />
         </Route>
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<Layout watches={watches} />}>
           <Route index element={<Home />} />
           {/*  */}
           <Route path="/watches" element={<Watches watches={watches} />} />
-          <Route path="/watches/brands/:brand" element={<Brand watches={watches} />} />
+          <Route
+            path="/watches/brands/:brand"
+            element={<Brand watches={watches} />}
+          />
           <Route
             path="/watches/tourbillons"
             element={<Tourbillon watches={watches} />}
@@ -109,7 +122,7 @@ const AppRoutes = () => {
             element={<Chronograph watches={watches} />}
           />
           <Route path="/watches/brands" element={<Brands />} />
-          <Route path="/checkout" element={<Checkout/>}/>
+          <Route path="/checkout" element={<Checkout />} />
           {/*  */}
           <Route path="/bands" element={<Bands bands={bands} />} />
           <Route
@@ -127,8 +140,10 @@ const AppRoutes = () => {
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="/account" element={<Account />} />
-          <Route path="/creatingAccount" element={<CreatingAccount />} />
-          <Route path="/test" element={<Test />} />
+          <Route path="/account" element={<Account />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/paymentCompleted" element={<PaymentCompleted />} />
+          <Route path="/orders" element={<Orders/>}/>
           <Route path="*" element={<Page404 link={"/"} />} />
         </Route>
       </Routes>
