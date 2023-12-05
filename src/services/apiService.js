@@ -1,7 +1,7 @@
 import axios from "axios";
 import { config } from "dotenv";
 
-export const API_URL = config.WEBSITE_URL;
+export const API_URL = config.SERVER_URL;
 
 export const TOKEN_KEY = "products_token";
 
