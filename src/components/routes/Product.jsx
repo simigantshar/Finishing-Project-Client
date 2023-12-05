@@ -169,7 +169,7 @@ export const Product = ({ products }) => {
                       "Add to cart"
                     )}
                   </button>
-                  {/* ................................................ */}
+                  {/* ................................................. */}
                   <button
                     onMouseOver={() => setShowPrice(false)}
                     onClick={addToCart}
